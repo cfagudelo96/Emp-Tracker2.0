@@ -1,0 +1,62 @@
+<%= form_for(training) do |f| %>
+  <% if training.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(training.errors.count, "error") %> prohibited this training from being saved:</h2>
+
+      <ul>
+      <% training.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :type %>
+    <%= f.text_field :type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :topic %>
+    <%= f.text_field :topic %>
+  </div>
+
+  <div class="field">
+    <%= f.label :objective %>
+    <%= f.text_area :objective %>
+  </div>
+
+  <div class="field">
+    <%= f.label :company_id %>
+    <%= f.number_field :company_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date %>
+    <%= f.datetime_select :date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hourly_intensity %>
+    <%= f.text_field :hourly_intensity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :trainer %>
+    <%= f.text_field :trainer %>
+  </div>
+
+  <div class="field">
+    <%= f.label :internal %>
+    <%= f.check_box :internal %>
+  </div>
+
+  <div class="field">
+    <%= f.label :planned %>
+    <%= f.check_box :planned %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

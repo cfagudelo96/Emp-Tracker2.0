@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  topic: MyString
+  objective: MyText
+  company_id: 1
+  date: 2017-04-07 20:36:49
+  hourly_intensity: 1.5
+  trainer: MyString
+  internal: false
+  planned: false
+
+two:
+  type: 
+  topic: MyString
+  objective: MyText
+  company_id: 1
+  date: 2017-04-07 20:36:49
+  hourly_intensity: 1.5
+  trainer: MyString
+  internal: false
+  planned: false
