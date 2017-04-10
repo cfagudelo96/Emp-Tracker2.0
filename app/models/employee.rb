@@ -6,4 +6,8 @@ class Employee < ApplicationRecord
   validates :name, presence: true
   validates :identification, uniqueness: true, numericality: { greater_than: 0 }
   validates :admission_date, presence: true
+
+  def to_s
+    name
+  end
 end

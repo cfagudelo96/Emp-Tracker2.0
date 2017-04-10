@@ -33,10 +33,15 @@
     </nav>
     <div class="container">
       <% if notice.present? %>
-        <div class="alert alert-info" role="alert">
+        <div class="alert alert-info" role="alert" style="display:none;">
           <p id="notice" style="display:inline;"><%= notice %></p>
           <span class="pull-right" onclick="esconderAlertas()"><%= fa_icon('times-circle') %></span>
         </div>
+        <script>
+          $(document).ready(function() {
+              mostrarAlertas();
+          })
+        </script>
       <% end %>
       <%= yield %>
     </div>

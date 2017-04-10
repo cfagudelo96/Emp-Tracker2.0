@@ -1,5 +1,5 @@
 class AreasController < ApplicationController
-  before_action :set_area, only: [:show, :edit, :update, :destroy]
+  before_action :set_area, only: [:edit, :update, :destroy]
 
   # GET /areas
   # GET /areas.json
@@ -24,7 +24,7 @@ class AreasController < ApplicationController
     respond_to do |format|
       if @area.save
         format.html { redirect_to areas_url, notice: 'El área fue creada exitósamente.' }
-        format.json { render :index, status: :created, location: @area }
+        format.json { render :show, status: :created, location: @area }
       else
         format.html { render :new }
         format.json { render json: @area.errors, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class AreasController < ApplicationController
     respond_to do |format|
       if @area.update(area_params)
         format.html { redirect_to areas_url, notice: 'El área fue actualizada exitósamente.' }
-        format.json { render :index, status: :ok, location: @area }
+        format.json { render :show, status: :ok, location: @area }
       else
         format.html { render :edit }
         format.json { render json: @area.errors, status: :unprocessable_entity }

@@ -1,27 +1,29 @@
-<p id="notice"><%= notice %></p>
+<h1>Compañías</h1>
 
-<h1>Companies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @companies.each do |company| %>
-      <tr>
-        <td><%= company.name %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tbody>
+      <% @companies.each do |company| %>
+        <tr>
+          <td>
+            <%= company.name %>
+            <span class="pull-right">
+              <%= link_to edit_company_path(company), class: 'btn btn-primary' do %>
+                Editar <%= fa_icon('pencil') %>
+              <% end %>
+              <%= link_to company, method: :delete, data: { confirm: '¿Seguro que desea eliminar la compañía?' }, class: 'btn btn-primary' do %>
+                Eliminar <%= fa_icon('trash') %>
+              <% end %>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
-<%= link_to 'New Company', new_company_path %>
+<%= link_to new_company_path, class: 'btn btn-primary' do %>
+  Nueva compañía <%= fa_icon('plus') %>
+<% end %>
