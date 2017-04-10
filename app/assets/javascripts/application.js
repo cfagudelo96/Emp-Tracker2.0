@@ -15,3 +15,7 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+function esconderAlertas() {
+    $('.alert').hide('slow');
+}

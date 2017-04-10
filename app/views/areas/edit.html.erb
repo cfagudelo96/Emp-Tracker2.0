@@ -1,6 +1,9 @@
-<h1>Editing Area</h1>
+<h1>Editando el área <%= "#{@area.name}" %></h1>
 
 <%= render 'form', area: @area %>
 
-<%= link_to 'Show', @area %> |
-<%= link_to 'Back', areas_path %>
+<br>
+
+<%= link_to areas_path, class: 'btn btn-primary' do %>
+  Atras <%= fa_icon('arrow-left') %>
+<% end %>

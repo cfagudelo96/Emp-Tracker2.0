@@ -1,5 +1,9 @@
-<h1>New Area</h1>
+<h1>Nueva área</h1>
 
 <%= render 'form', area: @area %>
 
-<%= link_to 'Back', areas_path %>
+<br>
+
+<%= link_to areas_path, class: 'btn btn-primary' do %>
+  Atras <%= fa_icon('arrow-left') %>
+<% end %>
