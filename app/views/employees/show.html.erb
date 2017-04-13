@@ -1,39 +1,26 @@
-<p id="notice"><%= notice %></p>
+<h4>Nombre</h4>
+<p><%= @employee.name %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @employee.name %>
-</p>
+<h4>Identificación</h4>
+<p>C.C. <%= @employee.identification %></p>
 
-<p>
-  <strong>Identification:</strong>
-  <%= @employee.identification %>
-</p>
+<h4>Área</h4>
+<p><%= Area.find(@employee.area_id) %></p>
 
-<p>
-  <strong>Area:</strong>
-  <%= @employee.area_id %>
-</p>
+<h4>Cargo</h4>
+<p><%= @employee.position %></p>
 
-<p>
-  <strong>Admission date:</strong>
-  <%= @employee.admission_date %>
-</p>
+<h4>Compañía</h4>
+<p><%= Company.find(@employee.company_id) %></p>
 
-<p>
-  <strong>Active:</strong>
-  <%= @employee.active %>
-</p>
+<h4>Fecha de ingreso</h4>
+<p><%= @employee.admission_date %></p>
 
-<p>
-  <strong>Position:</strong>
-  <%= @employee.position %>
-</p>
+<p><%= @employee.active ? 'Activo' : 'Inactivo' %></p>
 
-<p>
-  <strong>Company:</strong>
-  <%= @employee.company_id %>
-</p>
-
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<%= link_to employees_path, class: 'btn btn-primary' do %>
+  Atras <%= fa_icon('arrow-left') %>
+<% end %>
+<%= link_to edit_employee_path(@employee), class: 'btn btn-primary pull-right' do %>
+  Editar <%= fa_icon('pencil') %>
+<% end %>

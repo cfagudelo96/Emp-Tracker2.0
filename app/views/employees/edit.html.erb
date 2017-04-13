@@ -1,6 +1,12 @@
-<h1>Editing Employee</h1>
+<h1>Editando al empleado <%= @employee %></h1>
 
 <%= render 'form', employee: @employee %>
 
-<%= link_to 'Show', @employee %> |
-<%= link_to 'Back', employees_path %>
+<br>
+
+<%= link_to employees_path, class: 'btn btn-primary' do %>
+  Atras <%= fa_icon('arrow-left') %>
+<% end %>
+<%= link_to @employee, class: 'btn btn-primary pull-right' do %>
+  Ver detalles <%= fa_icon('info') %>
+<% end %>
