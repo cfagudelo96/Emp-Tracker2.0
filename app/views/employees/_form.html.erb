@@ -13,12 +13,12 @@
 
   <div class="form-group">
     <%= f.label :name, 'Nombre' %>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.text_field :name, required: true, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= f.label :identification, 'Identificación' %>
-    <%= f.number_field :identification, placeholder: 'Cédula de Ciudadanía', class: 'form-control' %>
+    <%= f.number_field :identification, required: true, placeholder: 'Cédula de Ciudadanía', class: 'form-control' %>
   </div>
 
   <div class="form-group">
@@ -39,7 +39,7 @@
   <div class="form-group" id="datepicker-container">
     <%= f.label :admission_date, 'Fecha de ingreso' %>
     <div class="input-group date">
-      <%= f.text_field :admission_date, class: 'form-control' %>
+      <%= f.text_field :admission_date, required: true, class: 'form-control' %>
       <span class="input-group-addon"><%= fa_icon('calendar') %></span>
     </div>
   </div>
