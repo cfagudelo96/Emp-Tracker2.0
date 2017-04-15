@@ -1,7 +1,7 @@
 <%= form_for(training) do |f| %>
   <% if training.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(training.errors.count, "error") %> prohibited this training from being saved:</h2>
+      <h2><%= pluralize(training.errors.count, "error") %> no permitieron guardar la formación:</h2>
 
       <ul>
       <% training.errors.full_messages.each do |message| %>
@@ -11,24 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :type %>
-    <%= f.text_field :type %>
+  <div class="form-group">
+    <%= f.label :category, 'Tipo' %>
+    <%= f.select :category, Training::CATEGORIES, {}, { class: 'form-control', onchange: 'categoryChanged()' } %>
   </div>
 
-  <div class="field">
-    <%= f.label :topic %>
-    <%= f.text_field :topic %>
+  <div class="form-group" id="category_form_group" style="display: none">
+    <%= f.label :category, '¿Cuál?' %>
+    <input class="form-control" type="text" id="training_category_other">
   </div>
 
-  <div class="field">
-    <%= f.label :objective %>
-    <%= f.text_area :objective %>
+  <div class="form-group">
+    <%= f.label :topic, 'Tema' %>
+    <%= f.text_field :topic, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :company_id %>
-    <%= f.number_field :company_id %>
+  <div class="form-group" id="objective_form_group">
+    <%= f.label :objective, 'Objetivo' %>
+    <%= f.text_area :objective, class: 'form-control', rows: 4 %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :area_id, 'Área responsable' %>
+    <%= f.collection_select :area_id, Area.all, :id, :name, {}, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :company_id, 'Compañía' %>
+    <%= f.collection_select :company_id, Company.all, :id, :name, {}, { class: 'form-control' } %>
   </div>
 
   <div class="field">
@@ -36,24 +46,26 @@
     <%= f.datetime_select :date %>
   </div>
 
-  <div class="field">
-    <%= f.label :hourly_intensity %>
-    <%= f.text_field :hourly_intensity %>
+  <div class="form-group">
+    <%= f.label :hourly_intensity, 'Intensidad horaria' %>
+    <%= f.number_field :hourly_intensity, min: 0, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :trainer %>
-    <%= f.text_field :trainer %>
+  <div class="form-group">
+    <%= f.label :trainer, 'Formador' %>
+    <%= f.text_field :trainer, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :internal %>
-    <%= f.check_box :internal %>
+  <div class="checkbox">
+    <%= f.label :internal do %>
+      <%= f.check_box :internal %>Interno
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :planned %>
-    <%= f.check_box :planned %>
+  <div class="checkbox">
+    <%= f.label :planned do %>
+      <%= f.check_box :planned, checked: true, onchange: 'plannedChanged()' %>Planeada
+    <% end %>
   </div>
 
   <div class="actions">

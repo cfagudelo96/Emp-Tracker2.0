@@ -1,11 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Trainings</h1>
+<h1>Formaciones</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Type</th>
+      <th>Categoría</th>
       <th>Topic</th>
       <th>Objective</th>
       <th>Company</th>
@@ -21,7 +19,7 @@
   <tbody>
     <% @trainings.each do |training| %>
       <tr>
-        <td><%= training.type %></td>
+        <td><%= training.category %></td>
         <td><%= training.topic %></td>
         <td><%= training.objective %></td>
         <td><%= training.company_id %></td>

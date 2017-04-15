@@ -28,7 +28,7 @@ class TrainingsController < ApplicationController
 
     respond_to do |format|
       if @training.save
-        format.html { redirect_to @training, notice: 'Training was successfully created.' }
+        format.html { redirect_to @training, notice: 'La formación ha sido creada exitósamente.' }
         format.json { render :show, status: :created, location: @training }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TrainingsController < ApplicationController
   def update
     respond_to do |format|
       if @training.update(training_params)
-        format.html { redirect_to @training, notice: 'Training was successfully updated.' }
+        format.html { redirect_to @training, notice: 'La formación fue actualizada exitósamente.' }
         format.json { render :show, status: :ok, location: @training }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class TrainingsController < ApplicationController
   def destroy
     @training.destroy
     respond_to do |format|
-      format.html { redirect_to trainings_url, notice: 'Training was successfully destroyed.' }
+      format.html { redirect_to trainings_url, notice: 'La formación fue eliminada exitósamente.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class TrainingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def training_params
-      params.require(:training).permit(:type, :topic, :objective, :company_id, :date, :hourly_intensity, :trainer, :internal, :planned)
+      params.require(:training).permit(:category, :topic, :objective, :company_id, :date, :hourly_intensity, :trainer, :internal, :planned, :planned_training_id, :area_id, :collaborator_id)
     end
 end
