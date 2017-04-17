@@ -7,7 +7,7 @@
         <td>
           <div class="row">
             <div class="col-md-8 col-xs-12">
-              <p><strong><%= employee.name %></strong> <small><%= '(Inactivo)' unless employee.active %></small></p>
+              <p><strong><%= employee.name %></strong> <%= raw '<small>(Inactivo)</small>' unless employee.active %></p>
               <p><%= Area.find(employee.area_id) %> (<%= employee.position %>)</p>
               <p><%= Company.find(employee.company_id) %></p>
             </div>

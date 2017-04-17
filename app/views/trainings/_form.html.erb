@@ -1,6 +1,6 @@
 <%= form_for(training) do |f| %>
   <% if training.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger" role="alert">
       <h2><%= pluralize(training.errors.count, "error") %> no permitieron guardar la formación:</h2>
 
       <ul>
@@ -32,8 +32,19 @@
   </div>
 
   <div class="form-group">
+    <label style="display: block;">Responsable</label>
+    <label class="radio-inline"><input type="radio" name="attendant" onchange="attendantChanged()" checked="true" value="area">Área</label>
+    <label class="radio-inline"><input type="radio" name="attendant" onchange="attendantChanged()" value="collaborator">Colaborador</label>
+  </div>
+
+  <div class="form-group" id="area_form_group">
     <%= f.label :area_id, 'Área responsable' %>
-    <%= f.collection_select :area_id, Area.all, :id, :name, {}, { class: 'form-control' } %>
+    <%= f.collection_select :area_id, Area.all, :id, :name, { include_blank: 'Seleccionar área...' }, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group" id="collaborator_form_group" style="display: none;">
+    <%= f.label :area_id, 'Colaborador responsable' %>
+    <%= f.collection_select :collaborator_id, Employee.all, :id, :name, { include_blank: 'Seleccionar colaborador...' }, { class: 'form-control' } %>
   </div>
 
   <div class="form-group">
@@ -69,6 +80,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Guardar', class: 'btn btn-primary' %>
   </div>
 <% end %>
