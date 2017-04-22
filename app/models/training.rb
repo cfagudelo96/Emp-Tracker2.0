@@ -5,6 +5,7 @@ class Training < ApplicationRecord
   validates :topic, presence: true
   validates :date, presence: true
   validates :hourly_intensity, numericality: { greater_than_or_equal_to: 0 }
+  validates :trainer, presence: true
   validate :area_and_collaborator_validator
   validate :objective_validator
 

@@ -23,7 +23,7 @@
 
   <div class="form-group">
     <%= f.label :topic, 'Tema' %>
-    <%= f.text_field :topic, class: 'form-control' %>
+    <%= f.text_field :topic, required: true, class: 'form-control' %>
   </div>
 
   <div class="form-group" id="objective_form_group">
@@ -52,19 +52,24 @@
     <%= f.collection_select :company_id, Company.all, :id, :name, {}, { class: 'form-control' } %>
   </div>
 
-  <div class="field">
-    <%= f.label :date %>
-    <%= f.datetime_select :date %>
+  <div class="form-group">
+    <%= f.label :date, 'Fecha de realización' %>
+    <div class="input-group date" id="datetimepicker">
+      <%= f.text_field :date, required: true, value: training.date.present? ? training.date.strftime('%d/%m/%y %R') : '', class: 'form-control' %>
+      <span class="input-group-addon">
+        <%= fa_icon('calendar') %>
+      </span>
+    </div>
   </div>
 
   <div class="form-group">
     <%= f.label :hourly_intensity, 'Intensidad horaria' %>
-    <%= f.number_field :hourly_intensity, min: 0, class: 'form-control' %>
+    <%= f.number_field :hourly_intensity, min: 0, required: true, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= f.label :trainer, 'Formador' %>
-    <%= f.text_field :trainer, class: 'form-control' %>
+    <%= f.text_field :trainer, required: true, class: 'form-control' %>
   </div>
 
   <div class="checkbox">
@@ -83,3 +88,11 @@
     <%= f.submit 'Guardar', class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+<script>
+    $(document).ready(function () {
+        $('#datetimepicker').datetimepicker({
+            locale: 'es'
+        });
+    })
+</script>
