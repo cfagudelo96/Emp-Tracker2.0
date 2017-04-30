@@ -1,0 +1,2 @@
+module TrainingExecutionsHelper
+end

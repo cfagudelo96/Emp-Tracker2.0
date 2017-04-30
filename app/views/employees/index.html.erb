@@ -5,25 +5,19 @@
     <% @employees.each do |employee| %>
       <tr>
         <td>
-          <div class="row">
-            <div class="col-md-8 col-xs-12">
-              <p><strong><%= employee.name %></strong> <%= raw '<small>(Inactivo)</small>' unless employee.active %></p>
-              <p><%= Area.find(employee.area_id) %> (<%= employee.position %>)</p>
-              <p><%= Company.find(employee.company_id) %></p>
-            </div>
-            <div class="col-md-4 col-xs-12">
-              <div class="pull-right" style="vertical-align: middle;">
-                <%= link_to employee, class: 'btn btn-primary' do %>
-                  Ver detalles <%= fa_icon('info') %>
-                <% end %>
-                <%= link_to edit_employee_path(employee), class: 'btn btn-primary' do %>
-                  Editar <%= fa_icon('pencil') %>
-                <% end %>
-                <%= link_to employee, method: :delete, data: { confirm: '¿Seguro que desea eliminar el empleado?' }, class: 'btn btn-primary' do %>
-                  Eliminar <%= fa_icon('trash') %>
-                <% end %>
-              </div>
-            </div>
+          <p><strong><%= employee.name %></strong> <%= raw '<small>(Inactivo)</small>' unless employee.active %></p>
+          <p><%= Area.find(employee.area_id) %> (<%= employee.position %>)</p>
+          <p><%= Company.find(employee.company_id) %></p>
+          <div class="pull-right">
+            <%= link_to employee, class: 'btn btn-primary' do %>
+              <%= fa_icon('info') %>
+            <% end %>
+            <%= link_to edit_employee_path(employee), class: 'btn btn-primary' do %>
+              <%= fa_icon('pencil') %>
+            <% end %>
+            <%= link_to employee, method: :delete, data: { confirm: '¿Seguro que desea eliminar el empleado?' }, class: 'btn btn-primary' do %>
+              <%= fa_icon('trash') %>
+            <% end %>
           </div>
         </td>
       </tr>
@@ -34,5 +28,5 @@
 <br>
 
 <%= link_to new_employee_path, class: 'btn btn-primary' do %>
-  Nuevo empleado <%= fa_icon('plus') %>
+  <%= fa_icon('plus') %>
 <% end %>

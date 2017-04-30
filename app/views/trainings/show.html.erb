@@ -1,49 +1,41 @@
-<p id="notice"><%= notice %></p>
+<h4>Categoría</h4>
+<p><%= @training.category %></p>
 
-<p>
-  <strong>Categoría:</strong>
-  <%= @training.category %>
-</p>
+<h4>Tema</h4>
+<p><%= @training.topic %></p>
 
-<p>
-  <strong>Topic:</strong>
-  <%= @training.topic %>
-</p>
+<% if @training.objective.present? %>
+  <h4>Objetivo</h4>
+  <p><%= @training.objective %></p>
+<% end %>
 
-<p>
-  <strong>Objective:</strong>
-  <%= @training.objective %>
-</p>
+<h4>Sede</h4>
+<p><%= Company.find(@training.company_id) %></p>
 
-<p>
-  <strong>Company:</strong>
-  <%= @training.company_id %>
-</p>
+<% if @training.area_id.present? %>
+  <h4>Área responsable</h4>
+  <p><%= Area.find(@training.area_id) %></p>
+<% end %>
 
-<p>
-  <strong>Date:</strong>
-  <%= @training.date %>
-</p>
+<% if @training.collaborator_id.present? %>
+  <h4>Colaborador responsable</h4>
+  <p><%= Employee.find(@training.collaborator_id) %></p>
+<% end %>
 
-<p>
-  <strong>Hourly intensity:</strong>
-  <%= @training.hourly_intensity %>
-</p>
+<h4>Fecha</h4>
+<p><%= @training.date.strftime('%d/%m/%y %R') %></p>
 
-<p>
-  <strong>Trainer:</strong>
-  <%= @training.trainer %>
-</p>
+<h4>Intensidad horaria</h4>
+<p><%= @training.hourly_intensity %></p>
 
-<p>
-  <strong>Internal:</strong>
-  <%= @training.internal %>
-</p>
+<h4>Formador</h4>
+<p><%= @training.trainer %></p>
 
-<p>
-  <strong>Planned:</strong>
-  <%= @training.planned %>
-</p>
+<h4><%= @training.internal ? 'Formación interna' : 'Formación externa' %></h4>
 
-<%= link_to 'Edit', edit_training_path(@training) %> |
-<%= link_to 'Back', trainings_path %>
+<%= link_to trainings_path, class: 'btn btn-primary' do %>
+  Atras <%= fa_icon('arrow-left') %>
+<% end %>
+<%= link_to edit_training_path(@training), class: 'btn btn-primary pull-right' do %>
+  Editar <%= fa_icon('pencil') %>
+<% end %>

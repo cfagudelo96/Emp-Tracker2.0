@@ -1,6 +1,12 @@
-<h1>Editing Training</h1>
+<h1>Editando formación</h1>
 
 <%= render 'form', training: @training %>
 
-<%= link_to 'Show', @training %> |
-<%= link_to 'Back', trainings_path %>
+<br>
+
+<%= link_to trainings_path, class: 'btn btn-primary' do %>
+  Atras <%= fa_icon('arrow-left') %>
+<% end %>
+<%= link_to @training, class: 'btn btn-primary pull-right' do %>
+  Ver detalles <%= fa_icon('info') %>
+<% end %>

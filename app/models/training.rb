@@ -6,24 +6,16 @@ class Training < ApplicationRecord
   validates :date, presence: true
   validates :hourly_intensity, numericality: { greater_than_or_equal_to: 0 }
   validates :trainer, presence: true
+  validates :company_id, presence: true
   validate :area_and_collaborator_validator
-  validate :objective_validator
 
   def area_and_collaborator_validator
     if area_id.blank? && collaborator_id.blank?
-      errors.add(:area_id, 'can not be blank')
-      errors.add(:collaborator_id, 'can not be blank')
+      errors.add(:area_id, 'can not be blank if collaborator is also blank')
+      errors.add(:collaborator_id, 'can not be blank if area is also blank')
     elsif area_id.present? && collaborator_id.present?
-      errors.add(:area_id, 'can not be present')
-      errors.add(:collaborator_id, 'can not be present')
-    end
-  end
-
-  def objective_validator
-    if planned && objective.blank?
-      errors.add(:objective, 'can not be blank if the training was planned')
-    elsif !planned && objective.present?
-      errors.add(:objective, 'can not be present if the training was not planned')
+      errors.add(:area_id, 'can not be present if collaborator is also present')
+      errors.add(:collaborator_id, 'can not be present if area is also present')
     end
   end
 

@@ -18,12 +18,3 @@
 //= require bootstrap-datetimepicker
 //= require turbolinks
 //= require_tree .
-
-function mostrarAlertas() {
-    $('.alert').show('slow');
-    setTimeout(esconderAlertas, 3000);
-}
-
-function esconderAlertas() {
-    $('.alert').hide('slow');
-}

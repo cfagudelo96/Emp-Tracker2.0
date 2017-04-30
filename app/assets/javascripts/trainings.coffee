@@ -2,14 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-@plannedChanged = ->
-  planned = $('#training_planned').is(':checked')
-  if planned
-    $('#objective_form_group').show('slow')
-  else
-    $('#training_objective').val('')
-    $('#objective_form_group').hide('slow')
-
 @categoryChanged = ->
   category_select = $('#training_category')
   if category_select.val() == 'Otro'

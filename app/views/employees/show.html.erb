@@ -1,5 +1,4 @@
-<h4>Nombre</h4>
-<p><%= @employee.name %></p>
+<h1><%= @employee.name %></h1>
 
 <h4>Identificación</h4>
 <p>C.C. <%= @employee.identification %></p>
@@ -20,8 +19,8 @@
 <p><%= @employee.active ? 'Activo' : 'Inactivo' %></p>
 
 <%= link_to employees_path, class: 'btn btn-primary' do %>
-  Atras <%= fa_icon('arrow-left') %>
+  <%= fa_icon('arrow-left') %>
 <% end %>
 <%= link_to edit_employee_path(@employee), class: 'btn btn-primary pull-right' do %>
-  Editar <%= fa_icon('pencil') %>
+  <%= fa_icon('pencil') %>
 <% end %>

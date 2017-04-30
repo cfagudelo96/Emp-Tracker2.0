@@ -39,7 +39,7 @@
   <div class="form-group">
     <%= f.label :admission_date, 'Fecha de ingreso' %>
     <div class="input-group date" id="datetimepicker">
-      <%= f.text_field :admission_date, required: true, class: 'form-control' %>
+      <%= f.text_field :admission_date, required: true, value: employee.admission_date.present? ? employee.admission_date.strftime('%d/%m/%y') : '', class: 'form-control' %>
       <span class="input-group-addon">
         <%= fa_icon('calendar') %>
       </span>
