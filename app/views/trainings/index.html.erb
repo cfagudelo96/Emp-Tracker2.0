@@ -17,6 +17,9 @@
       <td><%= training.topic %></td>
       <td><%= training.date.strftime('%d/%m/%y %R') %></td>
       <td>
+        <%= link_to new_training_training_execution_path(training), class: 'btn btn-primary' do %>
+          Añadir ejecución
+        <% end %>
         <%= link_to training, class: 'btn btn-primary' do %>
           <%= fa_icon('info') %>
         <% end %>
