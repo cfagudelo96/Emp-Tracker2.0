@@ -6,6 +6,10 @@ class TrainingExecutionsController < ApplicationController
     @training_execution = TrainingExecution.new
   end
 
+  def save
+    puts 'Holi'
+  end
+
   private
     def set_training
       @training = Training.find(params[:training_id])
