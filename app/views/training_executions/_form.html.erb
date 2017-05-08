@@ -1,84 +1,86 @@
-<%= form_for [training, training_execution] do |f| %>
-  <% if training.errors.any? %>
+<%= form_for(training_execution) do |f| %>
+  <% if training_execution.errors.any? %>
     <div id="error_explanation" class="alert alert-danger" role="alert">
-      <h2><%= pluralize(training.errors.count, "error") %> no permitieron guardar la formación:</h2>
+      <h2><%= pluralize(training_execution.errors.count, "error") %> no permitieron guardar la formación:</h2>
 
       <ul>
-        <% training.errors.full_messages.each do |message| %>
+        <% training_execution.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <%= f.fields_for training, training do |training_form| %>
-    <div class="form-group">
-      <%= training_form.label :category, 'Tipo' %>
-      <%= training_form.select :category, options_for_select(Training::CATEGORIES, training.category.blank? || Training::CATEGORIES.include?(training.category) ? Training::CATEGORIES[0] : Training::CATEGORIES[3]), {}, { class: 'form-control', onchange: 'categoryChanged()' } %>
-    </div>
+  <div class="form-group">
+    <%= f.label :category, 'Tipo' %>
+    <%= f.select :category, options_for_select(Training::CATEGORIES, training_execution.category.blank? || Training::CATEGORIES.include?(training_execution.category) ? Training::CATEGORIES[0] : Training::CATEGORIES[3]), {}, { class: 'form-control', onchange: 'categoryChanged()' } %>
+  </div>
 
-    <div class="form-group" id="category_form_group" style="<%= 'display: none;' if training.category.blank? || Training::CATEGORIES.include?(training.category) %>">
-      <%= training_form.label :category, '¿Cuál?' %>
-      <input class="form-control" type="text" value="<%= training.category %>" <%= 'name=training[category]' unless training.category.blank? || Training::CATEGORIES.include?(training.category) %> id="training_category_other">
-    </div>
+  <div class="form-group" id="category_form_group" style="<%= 'display: none;' if training_execution.category.blank? || Training::CATEGORIES.include?(training_execution.category) %>">
+    <%= f.label :category, '¿Cuál?' %>
+    <input class="form-control" type="text" value="<%= training_execution.category %>" <%= 'name=training_execution[category]' unless training_execution.category.blank? || Training::CATEGORIES.include?(training_execution.category) %> id="training_category_other">
+  </div>
 
-    <div class="form-group">
-      <%= training_form.label :topic, 'Tema' %>
-      <%= training_form.text_field :topic, required: true, class: 'form-control' %>
-    </div>
+  <div class="form-group">
+    <%= f.label :topic, 'Tema' %>
+    <%= f.text_field :topic, required: true, class: 'form-control' %>
+  </div>
 
-    <div class="form-group" id="objective_form_group">
-      <%= training_form.label :objective, 'Objetivo' %>
-      <%= training_form.text_area :objective, class: 'form-control', rows: 4 %>
-    </div>
+  <div class="form-group">
+    <%= f.label :objective, 'Objetivo' %>
+    <%= f.text_area :objective, class: 'form-control', rows: 4 %>
+  </div>
 
-    <div class="form-group">
-      <label style="display: block;">Responsable</label>
-      <label class="radio-inline"><input type="radio" name="attendant" onchange="attendantChanged()" value="area" <%= 'checked' if training.area_id.present? || (training.area_id.blank? && training.collaborator_id.blank?) %>>Área</label>
-      <label class="radio-inline"><input type="radio" name="attendant" onchange="attendantChanged()" value="collaborator" <%= 'checked' if training.collaborator_id.present? %>>Colaborador</label>
-    </div>
+  <div class="form-group">
+    <label style="display: block;">Responsable</label>
+    <label class="radio-inline"><input type="radio" name="attendant" onchange="attendantChanged()" value="area" <%= 'checked' if training_execution.area_id.present? || (training_execution.area_id.blank? && training_execution.collaborator_id.blank?) %>>Área</label>
+    <label class="radio-inline"><input type="radio" name="attendant" onchange="attendantChanged()" value="collaborator" <%= 'checked' if training_execution.collaborator_id.present? %>>Colaborador</label>
+  </div>
 
-    <div class="form-group" id="area_form_group" style="<%= 'display: none;' if training.collaborator_id.present? %>">
-      <%= training_form.label :area_id, 'Área responsable' %>
-      <%= training_form.collection_select :area_id, Area.all, :id, :name, { include_blank: 'Seleccionar área...' }, { class: 'form-control' } %>
-    </div>
+  <div class="form-group" id="area_form_group" style="<%= 'display: none;' if training_execution.collaborator_id.present? %>">
+    <%= f.label :area_id, 'Área responsable' %>
+    <%= f.collection_select :area_id, Area.all, :id, :name, { include_blank: 'Seleccionar área...' }, { class: 'form-control' } %>
+  </div>
 
-    <div class="form-group" id="collaborator_form_group" style="<%= 'display: none;' if training.area_id.present? || training.collaborator_id.blank? && training.area_id.blank? %>">
-      <%= training_form.label :area_id, 'Colaborador responsable' %>
-      <%= training_form.collection_select :collaborator_id, Employee.all, :id, :name, { include_blank: 'Seleccionar colaborador...' }, { class: 'form-control' } %>
-    </div>
+  <div class="form-group" id="collaborator_form_group" style="<%= 'display: none;' if training_execution.area_id.present? || training_execution.collaborator_id.blank? && training_execution.area_id.blank? %>">
+    <%= f.label :area_id, 'Colaborador responsable' %>
+    <%= f.collection_select :collaborator_id, Employee.all, :id, :name, { include_blank: 'Seleccionar colaborador...' }, { class: 'form-control' } %>
+  </div>
 
-    <div class="form-group">
-      <%= training_form.label :company_id, 'Compañía' %>
-      <%= training_form.collection_select :company_id, Company.all, :id, :name, {}, { class: 'form-control' } %>
-    </div>
+  <div class="form-group">
+    <%= f.label :company_id, 'Compañía' %>
+    <%= f.collection_select :company_id, Company.all, :id, :name, {}, { class: 'form-control' } %>
+  </div>
 
-    <div class="form-group">
-      <%= training_form.label :date, 'Fecha de realización' %>
-      <div class="input-group date" id="datetimepicker">
-        <%= training_form.text_field :date, required: true, value: training.date.present? ? training.date.strftime('%d/%m/%y %R') : '', class: 'form-control' %>
-        <span class="input-group-addon">
-          <%= fa_icon('calendar') %>
-        </span>
-      </div>
+  <div class="form-group">
+    <%= f.label :date, 'Fecha de realización' %>
+    <div class="input-group date" id="datetimepicker">
+      <%= f.text_field :date, required: true, value: training_execution.date.present? ? training_execution.date.strftime('%d/%m/%y %R') : '', class: 'form-control' %>
+      <span class="input-group-addon">
+        <%= fa_icon('calendar') %>
+      </span>
     </div>
+  </div>
 
-    <div class="form-group">
-      <%= training_form.label :hourly_intensity, 'Intensidad horaria' %>
-      <%= training_form.number_field :hourly_intensity, min: 0, required: true, class: 'form-control' %>
-    </div>
+  <div class="form-group">
+    <%= f.label :hourly_intensity, 'Intensidad horaria' %>
+    <%= f.number_field :hourly_intensity, min: 0, required: true, class: 'form-control' %>
+  </div>
 
-    <div class="form-group">
-      <%= training_form.label :trainer, 'Formador' %>
-      <%= training_form.text_field :trainer, required: true, class: 'form-control' %>
-    </div>
+  <div class="form-group">
+    <%= f.label :trainer, 'Formador' %>
+    <%= f.text_field :trainer, required: true, class: 'form-control' %>
+  </div>
 
-    <div class="checkbox">
-      <%= training_form.label :internal do %>
-        <%= training_form.check_box :internal %>Interno
-      <% end %>
-    </div>
-  <% end %>
+  <div class="checkbox">
+    <%= f.label :internal do %>
+      <%= f.check_box :internal %>Interno
+    <% end %>
+  </div>
+
+  <%= f.hidden_field :planned, value: training_execution.planned %>
+
+  <%= f.hidden_field :planned_training_id, value: training_execution.planned_training_id %>
 
   <div class="actions">
     <%= f.submit 'Guardar', class: 'btn btn-primary' %>

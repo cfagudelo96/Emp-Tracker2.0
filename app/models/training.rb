@@ -3,10 +3,12 @@ class Training < ApplicationRecord
 
   validates :category, presence: true
   validates :topic, presence: true
+  validates :objective, presence: true
   validates :date, presence: true
   validates :hourly_intensity, numericality: { greater_than_or_equal_to: 0 }
   validates :trainer, presence: true
   validates :company_id, presence: true
+
   validate :area_and_collaborator_validator
 
   def area_and_collaborator_validator

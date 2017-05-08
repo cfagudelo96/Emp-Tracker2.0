@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @training_execution.category %>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @training_execution.topic %>
+</p>
+
+<p>
+  <strong>Objective:</strong>
+  <%= @training_execution.objective %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @training_execution.date %>
+</p>
+
+<p>
+  <strong>Hourly intensity:</strong>
+  <%= @training_execution.hourly_intensity %>
+</p>
+
+<p>
+  <strong>Trainer:</strong>
+  <%= @training_execution.trainer %>
+</p>
+
+<p>
+  <strong>Internal:</strong>
+  <%= @training_execution.internal %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @training_execution.area_id %>
+</p>
+
+<p>
+  <strong>Collaborator:</strong>
+  <%= @training_execution.collaborator_id %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @training_execution.company_id %>
+</p>
+
+<p>
+  <strong>Planned training:</strong>
+  <%= @training_execution.planned_training_id %>
+</p>
+
+<p>
+  <strong>Planned:</strong>
+  <%= @training_execution.planned %>
+</p>
+
+<%= link_to 'Edit', edit_training_execution_path(@training_execution) %> |
+<%= link_to 'Back', training_executions_path %>

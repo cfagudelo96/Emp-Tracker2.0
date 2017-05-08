@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :trainings do
-    resources :training_executions
-  end
+  resources :trainings
+  resources :training_executions
   resources :employees
   resources :companies
   resources :areas
