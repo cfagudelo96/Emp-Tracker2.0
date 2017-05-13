@@ -1,11 +1,12 @@
 <h1>Compañías</h1>
 
-<table class="table table-striped">
-  <tbody>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tbody>
     <% @companies.each do |company| %>
       <tr>
         <td>
-          <%= company.name %>
+          <%= company %>
           <span class="pull-right">
             <%= link_to edit_company_path(company), class: 'btn btn-primary' do %>
               <%= fa_icon('pencil') %>
@@ -17,8 +18,9 @@
         </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
 <br>
 

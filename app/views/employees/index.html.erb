@@ -1,11 +1,12 @@
 <h1>Empleados</h1>
 
-<table class="table table-striped">
-  <tbody>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tbody>
     <% @employees.each do |employee| %>
       <tr>
         <td>
-          <p><strong><%= employee.name %></strong> <%= raw '<small>(Inactivo)</small>' unless employee.active %></p>
+          <p><strong><%= employee %></strong> <%= raw '<small>(Inactivo)</small>' unless employee.active %></p>
           <p><%= Area.find(employee.area_id) %> (<%= employee.position %>)</p>
           <p><%= Company.find(employee.company_id) %></p>
           <div class="pull-right">
@@ -22,8 +23,9 @@
         </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
 <br>
 

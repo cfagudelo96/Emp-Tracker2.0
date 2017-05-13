@@ -1,11 +1,12 @@
 <h1>Áreas</h1>
 
-<table class="table table-striped">
-  <tbody>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tbody>
     <% @areas.each do |area| %>
       <tr>
         <td>
-          <%= area.name %>
+          <%= area %>
           <span class="pull-right">
             <%= link_to edit_area_path(area), class: 'btn btn-primary' do %>
               <%= fa_icon('pencil') %>
@@ -17,8 +18,9 @@
         </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
 <br>
 

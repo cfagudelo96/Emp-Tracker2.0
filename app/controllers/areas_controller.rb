@@ -1,10 +1,16 @@
 class AreasController < ApplicationController
-  before_action :set_area, only: [:edit, :update, :destroy]
+  before_action :set_area, only: [:show, :edit, :update, :destroy]
 
   # GET /areas
   # GET /areas.json
   def index
     @areas = Area.all
+  end
+
+  # GET /areas/1
+  # GET /areas/1.json
+  def show
+    render json: @area
   end
 
   # GET /areas/new

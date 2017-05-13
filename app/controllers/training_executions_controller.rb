@@ -20,7 +20,6 @@ class TrainingExecutionsController < ApplicationController
       @training_execution.planned_training_id = params[:training_id]
     else
       @training_execution = TrainingExecution.new
-      @training_execution.planned = false
     end
   end
 
