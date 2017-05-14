@@ -1,9 +1,9 @@
 <h1>Editando el área <%= "#{@area}" %></h1>
 
-<%= render 'form', area: @area %>
+<div class="margin-bottom">
+  <%= render 'form', area: @area %>
+</div>
 
-<br>
-
-<%= link_to areas_path, class: 'btn btn-primary' do %>
+<%= link_to areas_path, class: 'btn btn-default' do %>
   <%= fa_icon('arrow-left') %>
 <% end %>

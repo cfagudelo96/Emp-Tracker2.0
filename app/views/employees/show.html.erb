@@ -18,9 +18,9 @@
 <h4>Estado</h4>
 <p><%= @employee.active ? 'Activo' : 'Inactivo' %></p>
 
-<%= link_to employees_path, class: 'btn btn-primary' do %>
+<%= link_to employees_path, class: 'btn btn-default' do %>
   <%= fa_icon('arrow-left') %>
 <% end %>
-<%= link_to edit_employee_path(@employee), class: 'btn btn-primary pull-right' do %>
+<%= link_to edit_employee_path(@employee), class: 'btn btn-warning pull-right' do %>
   <%= fa_icon('pencil') %>
 <% end %>

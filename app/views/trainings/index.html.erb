@@ -1,6 +1,6 @@
-<h1>Formaciones</h1>
+<h1>Formaciones planeadas</h1>
 
-<div class="table-responsive">
+<div class="table-responsive margin-bottom">
   <table class="table table-striped">
     <tbody>
     <% @trainings.each do |training| %>
@@ -28,8 +28,6 @@
     </tbody>
   </table>
 </div>
-
-<br>
 
 <%= link_to new_training_path, class: 'btn btn-primary' do %>
   <%= fa_icon('plus') %>

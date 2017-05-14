@@ -7,6 +7,11 @@ class TrainingsController < ApplicationController
     @trainings = Training.all
   end
 
+  def all
+    @trainings = Training.all
+    @training_executions = TrainingExecution.all
+  end
+
   # GET /trainings/1
   # GET /trainings/1.json
   def show

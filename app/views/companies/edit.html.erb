@@ -1,9 +1,9 @@
 <h1>Editando la compañía <%= "#{@company}" %></h1>
 
-<%= render 'form', company: @company %>
+<div class="margin-bottom">
+  <%= render 'form', company: @company %>
+</div>
 
-<br>
-
-<%= link_to companies_path, class: 'btn btn-primary' do %>
+<%= link_to companies_path, class: 'btn btn-default' do %>
   <%= fa_icon('arrow-left') %>
 <% end %>

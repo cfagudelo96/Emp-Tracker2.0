@@ -34,9 +34,9 @@
 
 <h4><%= @training_execution.planned ? 'Formación planeada' : 'Formación no planeada' %></h4>
 
-<%= link_to training_executions_path, class: 'btn btn-primary' do %>
+<%= link_to training_executions_path, class: 'btn btn-default' do %>
   Atras <%= fa_icon('arrow-left') %>
 <% end %>
-<%= link_to edit_training_execution_path(@training_execution), class: 'btn btn-primary pull-right' do %>
+<%= link_to edit_training_execution_path(@training_execution), class: 'btn btn-warning pull-right' do %>
   Editar <%= fa_icon('pencil') %>
 <% end %>

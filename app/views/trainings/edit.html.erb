@@ -1,12 +1,12 @@
 <h1>Editando formación</h1>
 
-<%= render 'form', training: @training %>
+<div class="margin-bottom">
+  <%= render 'form', training: @training %>
+</div>
 
-<br>
-
-<%= link_to trainings_path, class: 'btn btn-primary' do %>
+<%= link_to trainings_path, class: 'btn btn-default' do %>
   <%= fa_icon('arrow-left') %>
 <% end %>
-<%= link_to @training, class: 'btn btn-primary pull-right' do %>
+<%= link_to @training, class: 'btn btn-info pull-right' do %>
   <%= fa_icon('info') %>
 <% end %>

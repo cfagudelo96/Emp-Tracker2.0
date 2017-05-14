@@ -1,9 +1,9 @@
 <h1>Nuevo empleado</h1>
 
-<%= render 'form', employee: @employee %>
+<div class="margin-bottom">
+  <%= render 'form', employee: @employee %>
+</div>
 
-<br>
-
-<%= link_to employees_path, class: 'btn btn-primary' do %>
+<%= link_to employees_path, class: 'btn btn-default' do %>
   <%= fa_icon('arrow-left') %>
 <% end %>

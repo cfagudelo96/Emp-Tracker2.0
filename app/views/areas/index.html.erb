@@ -1,6 +1,6 @@
 <h1>Áreas</h1>
 
-<div class="table-responsive">
+<div class="table-responsive margin-bottom">
   <table class="table table-striped">
     <tbody>
     <% @areas.each do |area| %>
@@ -8,10 +8,10 @@
         <td>
           <%= area %>
           <span class="pull-right">
-            <%= link_to edit_area_path(area), class: 'btn btn-primary' do %>
+            <%= link_to edit_area_path(area), class: 'btn btn-warning' do %>
               <%= fa_icon('pencil') %>
             <% end %>
-            <%= link_to area, method: :delete, data: { confirm: '¿Seguro que desea eliminar el área?' }, class: 'btn btn-primary' do %>
+            <%= link_to area, method: :delete, data: { confirm: '¿Seguro que desea eliminar el área?' }, class: 'btn btn-danger' do %>
               <%= fa_icon('trash') %>
             <% end %>
           </span>
@@ -22,8 +22,6 @@
   </table>
 </div>
 
-<br>
-
-<%= link_to new_area_path, class: 'btn btn-primary' do %>
+<%= link_to new_area_path, class: 'btn btn-default' do %>
   <%= fa_icon('plus') %>
 <% end %>

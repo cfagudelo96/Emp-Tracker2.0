@@ -1,6 +1,6 @@
 <h1>Compañías</h1>
 
-<div class="table-responsive">
+<div class="table-responsive margin-bottom">
   <table class="table table-striped">
     <tbody>
     <% @companies.each do |company| %>
@@ -8,10 +8,10 @@
         <td>
           <%= company %>
           <span class="pull-right">
-            <%= link_to edit_company_path(company), class: 'btn btn-primary' do %>
+            <%= link_to edit_company_path(company), class: 'btn btn-warning' do %>
               <%= fa_icon('pencil') %>
             <% end %>
-            <%= link_to company, method: :delete, data: { confirm: '¿Seguro que desea eliminar la compañía?' }, class: 'btn btn-primary' do %>
+            <%= link_to company, method: :delete, data: { confirm: '¿Seguro que desea eliminar la compañía?' }, class: 'btn btn-danger' do %>
               <%= fa_icon('trash') %>
             <% end %>
           </span>
@@ -22,8 +22,6 @@
   </table>
 </div>
 
-<br>
-
-<%= link_to new_company_path, class: 'btn btn-primary' do %>
+<%= link_to new_company_path, class: 'btn btn-default' do %>
   <%= fa_icon('plus') %>
 <% end %>

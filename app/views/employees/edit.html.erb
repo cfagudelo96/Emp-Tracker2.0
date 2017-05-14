@@ -1,12 +1,12 @@
 <h1>Editando al empleado <%= @employee %></h1>
 
-<%= render 'form', employee: @employee %>
+<div class="margin-bottom">
+  <%= render 'form', employee: @employee %>
+</div>
 
-<br>
-
-<%= link_to employees_path, class: 'btn btn-primary' do %>
+<%= link_to employees_path, class: 'btn btn-default' do %>
   <%= fa_icon('arrow-left') %>
 <% end %>
-<%= link_to @employee, class: 'btn btn-primary pull-right' do %>
+<%= link_to @employee, class: 'btn btn-info pull-right' do %>
   <%= fa_icon('info') %>
 <% end %>

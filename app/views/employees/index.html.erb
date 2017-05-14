@@ -1,25 +1,25 @@
 <h1>Empleados</h1>
 
-<div class="table-responsive">
+<div class="table-responsive margin-bottom">
   <table class="table table-striped">
     <tbody>
     <% @employees.each do |employee| %>
       <tr>
         <td>
-          <p><strong><%= employee %></strong> <%= raw '<small>(Inactivo)</small>' unless employee.active %></p>
+          <h4><%= employee %> <%= raw '<small>(Inactivo)</small>' unless employee.active %></h4>
           <p><%= Area.find(employee.area_id) %> (<%= employee.position %>)</p>
           <p><%= Company.find(employee.company_id) %></p>
-          <div class="pull-right">
-            <%= link_to employee, class: 'btn btn-primary' do %>
+          <span class="pull-right">
+            <%= link_to employee, class: 'btn btn-info' do %>
               <%= fa_icon('info') %>
             <% end %>
-            <%= link_to edit_employee_path(employee), class: 'btn btn-primary' do %>
+            <%= link_to edit_employee_path(employee), class: 'btn btn-warning' do %>
               <%= fa_icon('pencil') %>
             <% end %>
-            <%= link_to employee, method: :delete, data: { confirm: '¿Seguro que desea eliminar el empleado?' }, class: 'btn btn-primary' do %>
+            <%= link_to employee, method: :delete, data: { confirm: '¿Seguro que desea eliminar el empleado?' }, class: 'btn btn-danger' do %>
               <%= fa_icon('trash') %>
             <% end %>
-          </div>
+          </span>
         </td>
       </tr>
     <% end %>
@@ -27,8 +27,6 @@
   </table>
 </div>
 
-<br>
-
-<%= link_to new_employee_path, class: 'btn btn-primary' do %>
+<%= link_to new_employee_path, class: 'btn btn-default' do %>
   <%= fa_icon('plus') %>
 <% end %>
