@@ -5,8 +5,6 @@ class TrainingExecution < ApplicationRecord
   validates :hourly_intensity, numericality: { greater_than_or_equal_to: 0 }
   validates :trainer, presence: true
   validates :company_id, presence: true
-  validates :planned_training_id, presence: true
-  validates :planned, presence: true
 
   validate :area_and_collaborator_validator
 

@@ -2,5 +2,11 @@
 
 <%= render 'form', training_execution: @training_execution %>
 
-<%= link_to 'Show', @training_execution %> |
-<%= link_to 'Back', training_executions_path %>
+<br>
+
+<%= link_to training_executions_path, class: 'btn btn-primary' do %>
+  <%= fa_icon('arrow-left') %>
+<% end %>
+<%= link_to @training_execution, class: 'btn btn-primary pull-right' do %>
+  <%= fa_icon('info') %>
+<% end %>

@@ -1,36 +1,33 @@
 <h1>Formaciones</h1>
 
-<table class="table">
-  <thead>
-  <tr>
-    <th>Categoría</th>
-    <th>Tema</th>
-    <th>Fecha</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @trainings.each do |training| %>
-    <tr>
-      <td><%= training.category %></td>
-      <td><%= training.topic %></td>
-      <td><%= training.date.strftime('%d/%m/%y %R') %></td>
-      <td>
-        <%= link_to training, class: 'btn btn-primary' do %>
-          <%= fa_icon('info') %>
-        <% end %>
-        <%= link_to edit_training_path(training), class: 'btn btn-primary' do %>
-          <%= fa_icon('pencil') %>
-        <% end %>
-        <%= link_to training, method: :delete, data: { confirm: '¿Seguro que desea eliminar la formación?' }, class: 'btn btn-primary' do %>
-          <%= fa_icon('trash') %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tbody>
+    <% @trainings.each do |training| %>
+      <tr>
+        <td>
+          <p><%= training.topic %> (<%= training.category %>)</p>
+          <p><%= training.date.strftime('%d/%m/%y %R') %></p>
+          <div class="pull-right">
+            <%= link_to new_training_execution_path(training_id: training.id), class: 'btn btn-primary' do %>
+              Registrar ejecución
+            <% end %>
+            <%= link_to training, class: 'btn btn-primary' do %>
+              <%= fa_icon('info') %>
+            <% end %>
+            <%= link_to edit_training_path(training), class: 'btn btn-primary' do %>
+              <%= fa_icon('pencil') %>
+            <% end %>
+            <%= link_to training, method: :delete, data: { confirm: '¿Seguro que desea eliminar la formación?' }, class: 'btn btn-primary' do %>
+              <%= fa_icon('trash') %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 

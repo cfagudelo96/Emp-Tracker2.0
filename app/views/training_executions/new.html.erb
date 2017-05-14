@@ -1,5 +1,9 @@
-<h1>New Training Execution</h1>
+<h1>Nueva formación ejecutada</h1>
 
 <%= render 'form', training_execution: @training_execution %>
 
-<%= link_to 'Back', training_executions_path %>
+<br>
+
+<%= link_to training_executions_path, class: 'btn btn-primary' do %>
+  <%= fa_icon('arrow-left') %>
+<% end %>

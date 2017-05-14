@@ -1,64 +1,42 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @training_execution.topic %></h1>
 
-<p>
-  <strong>Category:</strong>
-  <%= @training_execution.category %>
-</p>
+<h4>Categoría</h4>
+<p><%= @training_execution.category %></p>
 
-<p>
-  <strong>Topic:</strong>
-  <%= @training_execution.topic %>
-</p>
+<% if @training_execution.objective.present? %>
+  <h4>Objetivo</h4>
+  <p><%= @training_execution.objective %></p>
+<% end %>
 
-<p>
-  <strong>Objective:</strong>
-  <%= @training_execution.objective %>
-</p>
+<h4>Sede</h4>
+<p><%= Company.find(@training_execution.company_id) %></p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @training_execution.date %>
-</p>
+<% if @training_execution.area_id.present? %>
+  <h4>Área responsable</h4>
+  <p><%= Area.find(@training_execution.area_id) %></p>
+<% end %>
 
-<p>
-  <strong>Hourly intensity:</strong>
-  <%= @training_execution.hourly_intensity %>
-</p>
+<% if @training_execution.collaborator_id.present? %>
+  <h4>Colaborador responsable</h4>
+  <p><%= Employee.find(@training_execution.collaborator_id) %></p>
+<% end %>
 
-<p>
-  <strong>Trainer:</strong>
-  <%= @training_execution.trainer %>
-</p>
+<h4>Fecha</h4>
+<p><%= @training_execution.date.strftime('%d/%m/%y %R') %></p>
 
-<p>
-  <strong>Internal:</strong>
-  <%= @training_execution.internal %>
-</p>
+<h4>Intensidad horaria</h4>
+<p><%= @training_execution.hourly_intensity %></p>
 
-<p>
-  <strong>Area:</strong>
-  <%= @training_execution.area_id %>
-</p>
+<h4>Formador</h4>
+<p><%= @training_execution.trainer %></p>
 
-<p>
-  <strong>Collaborator:</strong>
-  <%= @training_execution.collaborator_id %>
-</p>
+<h4><%= @training_execution.internal ? 'Formación interna' : 'Formación externa' %></h4>
 
-<p>
-  <strong>Company:</strong>
-  <%= @training_execution.company_id %>
-</p>
+<h4><%= @training_execution.planned ? 'Formación planeada' : 'Formación no planeada' %></h4>
 
-<p>
-  <strong>Planned training:</strong>
-  <%= @training_execution.planned_training_id %>
-</p>
-
-<p>
-  <strong>Planned:</strong>
-  <%= @training_execution.planned %>
-</p>
-
-<%= link_to 'Edit', edit_training_execution_path(@training_execution) %> |
-<%= link_to 'Back', training_executions_path %>
+<%= link_to training_executions_path, class: 'btn btn-primary' do %>
+  Atras <%= fa_icon('arrow-left') %>
+<% end %>
+<%= link_to edit_training_execution_path(@training_execution), class: 'btn btn-primary pull-right' do %>
+  Editar <%= fa_icon('pencil') %>
+<% end %>
