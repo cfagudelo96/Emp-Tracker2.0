@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-@categoryChanged = ->
+@trainingCategoryChanged = ->
   category_select = $('#training_category')
   if category_select.val() == 'Otro'
     category_select.removeAttr('name')
@@ -13,8 +13,8 @@
     category_select.attr('name', 'training[category]')
     $('#category_form_group').hide('slow')
 
-@attendantChanged = ->
-  attendant = $("input:radio[name ='attendant']:checked").val();
+@trainingAttendantChanged = ->
+  attendant = $("input:radio[name='attendant']:checked").val();
   if attendant == 'area'
     $('#collaborator_form_group').hide('slow')
     $('#area_form_group').show('slow')

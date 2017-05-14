@@ -32,9 +32,9 @@
 
 <h4><%= @training.internal ? 'Formación interna' : 'Formación externa' %></h4>
 
-<%= link_to trainings_path, class: 'btn btn-primary' do %>
-  Atras <%= fa_icon('arrow-left') %>
+<%= link_to trainings_path, class: 'btn btn-default' do %>
+  <%= fa_icon('arrow-left') %>
 <% end %>
-<%= link_to edit_training_path(@training), class: 'btn btn-primary pull-right' do %>
-  Editar <%= fa_icon('pencil') %>
+<%= link_to edit_training_path(@training), class: 'btn btn-warning pull-right' do %>
+  <%= fa_icon('pencil') %>
 <% end %>

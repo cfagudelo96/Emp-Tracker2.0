@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <%= f.label :category, 'Tipo' %>
-    <%= f.select :category, options_for_select(Training::CATEGORIES, training_execution.category.blank? || Training::CATEGORIES.include?(training_execution.category) ? Training::CATEGORIES[0] : Training::CATEGORIES[3]), {}, { class: 'form-control', onchange: 'categoryChanged()' } %>
+    <%= f.select :category, options_for_select(Training::CATEGORIES, training_execution.category.blank? || Training::CATEGORIES.include?(training_execution.category) ? Training::CATEGORIES[0] : Training::CATEGORIES[3]), {}, { class: 'form-control', onchange: 'trainingExecutionCategoryChanged()' } %>
   </div>
 
   <div class="form-group" id="category_form_group" style="<%= 'display: none;' if training_execution.category.blank? || Training::CATEGORIES.include?(training_execution.category) %>">
@@ -33,8 +33,8 @@
 
   <div class="form-group">
     <label style="display: block;">Responsable</label>
-    <label class="radio-inline"><input type="radio" name="attendant" onchange="attendantChanged()" value="area" <%= 'checked' if training_execution.area_id.present? || (training_execution.area_id.blank? && training_execution.collaborator_id.blank?) %>>Área</label>
-    <label class="radio-inline"><input type="radio" name="attendant" onchange="attendantChanged()" value="collaborator" <%= 'checked' if training_execution.collaborator_id.present? %>>Colaborador</label>
+    <label class="radio-inline"><input type="radio" name="attendant" onchange="trainingExecutionAttendantChanged()" value="area" <%= 'checked' if training_execution.area_id.present? || (training_execution.area_id.blank? && training_execution.collaborator_id.blank?) %>>Área</label>
+    <label class="radio-inline"><input type="radio" name="attendant" onchange="trainingExecutionAttendantChanged()" value="collaborator" <%= 'checked' if training_execution.collaborator_id.present? %>>Colaborador</label>
   </div>
 
   <div class="form-group" id="area_form_group" style="<%= 'display: none;' if training_execution.collaborator_id.present? %>">

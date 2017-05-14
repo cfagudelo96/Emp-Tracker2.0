@@ -1,47 +1,35 @@
-<h1>Training Executions</h1>
+<h1>Formaciones ejecutadas</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Topic</th>
-      <th>Objective</th>
-      <th>Date</th>
-      <th>Hourly intensity</th>
-      <th>Trainer</th>
-      <th>Internal</th>
-      <th>Area</th>
-      <th>Collaborator</th>
-      <th>Company</th>
-      <th>Planned training</th>
-      <th>Planned</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="table-responsive margin-bottom">
+  <table class="table table-striped">
+    <tbody>
     <% @training_executions.each do |training_execution| %>
       <tr>
-        <td><%= training_execution.category %></td>
-        <td><%= training_execution.topic %></td>
-        <td><%= training_execution.objective %></td>
-        <td><%= training_execution.date %></td>
-        <td><%= training_execution.hourly_intensity %></td>
-        <td><%= training_execution.trainer %></td>
-        <td><%= training_execution.internal %></td>
-        <td><%= training_execution.area_id %></td>
-        <td><%= training_execution.collaborator_id %></td>
-        <td><%= training_execution.company_id %></td>
-        <td><%= training_execution.planned_training_id %></td>
-        <td><%= training_execution.planned %></td>
-        <td><%= link_to 'Show', training_execution %></td>
-        <td><%= link_to 'Edit', edit_training_execution_path(training_execution) %></td>
-        <td><%= link_to 'Destroy', training_execution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <p><%= training_execution.topic %> (<%= training_execution.category %>)</p>
+          <p><%= training_execution.date.strftime('%d/%m/%y %R') %></p>
+          <div class="pull-right">
+            <%= link_to training_execution, class: 'btn btn-info' do %>
+              <%= fa_icon('info') %>
+            <% end %>
+            <%= link_to edit_training_execution_path(training_execution), class: 'btn btn-warning' do %>
+              <%= fa_icon('pencil') %>
+            <% end %>
+            <%= link_to training_execution, method: :delete, data: { confirm: '¿Seguro que desea eliminar la formación?' }, class: 'btn btn-danger' do %>
+              <%= fa_icon('trash') %>
+            <% end %>
+          </div>
+        </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
-<br>
+<%= link_to new_training_execution_path, class: 'btn btn-default' do %>
+  <%= fa_icon('plus') %>
+<% end %>
 
-<%= link_to 'New Training Execution', new_training_execution_path %>
+<%= link_to all_trainings_path, class: 'btn btn-default pull-right' do %>
+  <%= fa_icon('eye') %> Todas las formaciones
+<% end %>

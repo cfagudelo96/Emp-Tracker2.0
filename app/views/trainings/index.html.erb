@@ -9,16 +9,16 @@
           <p><%= training.topic %> (<%= training.category %>)</p>
           <p><%= training.date.strftime('%d/%m/%y %R') %></p>
           <div class="pull-right">
-            <%= link_to new_training_execution_path(training_id: training.id), class: 'btn btn-primary' do %>
+            <%= link_to new_training_execution_path(training_id: training.id), class: 'btn btn-default' do %>
               Registrar ejecución
             <% end %>
-            <%= link_to training, class: 'btn btn-primary' do %>
+            <%= link_to training, class: 'btn btn-info' do %>
               <%= fa_icon('info') %>
             <% end %>
-            <%= link_to edit_training_path(training), class: 'btn btn-primary' do %>
+            <%= link_to edit_training_path(training), class: 'btn btn-warning' do %>
               <%= fa_icon('pencil') %>
             <% end %>
-            <%= link_to training, method: :delete, data: { confirm: '¿Seguro que desea eliminar la formación?' }, class: 'btn btn-primary' do %>
+            <%= link_to training, method: :delete, data: { confirm: '¿Seguro que desea eliminar la formación?' }, class: 'btn btn-danger' do %>
               <%= fa_icon('trash') %>
             <% end %>
           </div>
@@ -29,6 +29,10 @@
   </table>
 </div>
 
-<%= link_to new_training_path, class: 'btn btn-primary' do %>
+<%= link_to new_training_path, class: 'btn btn-default' do %>
   <%= fa_icon('plus') %>
+<% end %>
+
+<%= link_to all_trainings_path, class: 'btn btn-default pull-right' do %>
+  <%= fa_icon('eye') %> Todas las formaciones
 <% end %>
