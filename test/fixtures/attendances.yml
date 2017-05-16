@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  training_execution_id: 1
+  employee_id: 1
+
+two:
+  training_execution_id: 1
+  employee_id: 1

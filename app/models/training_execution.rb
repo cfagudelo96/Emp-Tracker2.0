@@ -1,4 +1,9 @@
 class TrainingExecution < ApplicationRecord
+  has_many :attendances
+  has_many :employees, through: :attendances
+
+  belongs_to :company
+
   validates :category, presence: true
   validates :topic, presence: true
   validates :date, presence: true

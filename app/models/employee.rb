@@ -1,5 +1,7 @@
 class Employee < ApplicationRecord
-  has_many :trainings
+  has_many :attendances
+  has_many :training_executions, through: :attendances
+
   belongs_to :area
   belongs_to :company
 

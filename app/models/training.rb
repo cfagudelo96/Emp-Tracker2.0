@@ -1,6 +1,8 @@
 class Training < ApplicationRecord
   CATEGORIES = %w(Capacitación Inducción Entrenamiento Otro)
 
+  belongs_to :company
+
   validates :category, presence: true
   validates :topic, presence: true
   validates :objective, presence: true

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :attendances
   resources :trainings do
     collection do
       get 'all'
