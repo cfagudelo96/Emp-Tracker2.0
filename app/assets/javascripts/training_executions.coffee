@@ -29,3 +29,21 @@ selectedEmployee = null
 @selectEmployee = (element, employee_id, employee_name) ->
   $('.active').removeClass('active')
   $(element).addClass('active')
+  selectedEmployee = {
+    id: employee_id,
+    name: employee_name,
+    element: element
+  }
+
+#TODO Añadir y remover hidden inputs
+@addEmployee = ->
+  if selectedEmployee?
+    $(selectedEmployee.element).remove()
+    $('#selected-employees').append("<button type='button' onclick='selectEmployee(this, #{ selectedEmployee.id }, \"#{ selectedEmployee.name }\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name}</button>")
+    selectedEmployee = null
+
+@removeEmployee = ->
+  if selectedEmployee?
+    $(selectedEmployee.element).remove()
+    $('#non-selected-employees').append("<button type='button' onclick='selectEmployee(this, #{ selectedEmployee.id }, \"#{ selectedEmployee.name }\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name}</button>")
+    selectedEmployee = null

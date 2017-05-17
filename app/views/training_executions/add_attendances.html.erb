@@ -2,25 +2,25 @@
 
 <%= form_for @training_execution, url: create_attendances_training_execution_path do |f| %>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 col-xs-11">
       <div class="list-group" id="non-selected-employees">
         <% @employees.each do |employee| %>
-          <button type="button" onclick="selectEmployee(this, '<%= employee.name %>', <%= employee.id %>)" class="list-group-item list-group-item-compact"><%= employee %></button>
+          <button type="button" onclick="selectEmployee(this, <%= employee.id %>, '<%= employee.name %>')" class="list-group-item list-group-item-compact"><%= employee %></button>
         <% end %>
       </div>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-1 col-xs-1">
       <div class="margin-bottom">
-        <button type="button" class="btn btn-default"><%= fa_icon('angle-right') %></button>
+        <button type="button" onclick="addEmployee()" class="btn btn-default full-width"><%= fa_icon('angle-right') %></button>
       </div>
-      <div>
-        <button type="button" class="btn btn-default"><%= fa_icon('angle-left') %></button>
+      <div class="margin-bottom">
+        <button type="button" onclick="removeEmployee()" class="btn btn-default full-width"><%= fa_icon('angle-left') %></button>
       </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5 col-xs-12">
       <div class="list-group" id="selected-employees">
         <% @selected_employees.each do |employee| %>
-          <button type="button" class="btn btn-default"
+          <button type="button" onclick="selectedEmployee(this, <%= employee.id %>, '<%= employee.name %>')" class="btn btn-default"></button>
         <% end %>
       </div>
     </div>
