@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+selectedEmployee = null
+
 @trainingExecutionCategoryChanged = ->
   category_select = $('#training_execution_category')
   if category_select.val() == 'Otro'
@@ -23,3 +25,7 @@
     $('#area_form_group').hide('slow')
     $('#collaborator_form_group').show('slow')
     $('#training_execution_area_id').val(null)
+
+@selectEmployee = (element, employee_id, employee_name) ->
+  $('.active').removeClass('active')
+  $(element).addClass('active')

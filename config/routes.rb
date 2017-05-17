@@ -5,7 +5,12 @@ Rails.application.routes.draw do
       get 'all'
     end
   end
-  resources :training_executions
+  resources :training_executions do
+    member do
+      get 'add_attendances'
+      post 'create_attendances'
+    end
+  end
   resources :employees
   resources :companies
   resources :areas

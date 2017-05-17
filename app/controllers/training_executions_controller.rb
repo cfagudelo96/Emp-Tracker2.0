@@ -1,5 +1,5 @@
 class TrainingExecutionsController < ApplicationController
-  before_action :set_training_execution, only: [:show, :edit, :update, :destroy]
+  before_action :set_training_execution, only: [:show, :edit, :update, :destroy, :add_attendances, :create_attendances]
 
   # GET /training_executions
   # GET /training_executions.json
@@ -65,6 +65,15 @@ class TrainingExecutionsController < ApplicationController
       format.html { redirect_to training_executions_url, notice: 'Training execution was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def add_attendances
+    @employees = Employee.where('active = ?', true)
+    @selected_employees = []
+  end
+
+  def create_attendances
+
   end
 
   private
