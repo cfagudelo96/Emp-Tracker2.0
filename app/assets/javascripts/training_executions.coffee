@@ -38,12 +38,15 @@ selectedEmployee = null
 #TODO Añadir y remover hidden inputs
 @addEmployee = ->
   if selectedEmployee?
+    divSelectedEmployees = $('#selected-employees')
+    divSelectedEmployees.append("<button type='button' onclick='selectEmployee(this, #{ selectedEmployee.id }, \"#{ selectedEmployee.name }\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name}</button>")
+    divSelectedEmployees.append("<input type='hidden' name='employees' value='#{selectedEmployee.id}' id='employee-#{selectedEmployee.id}'>")
     $(selectedEmployee.element).remove()
-    $('#selected-employees').append("<button type='button' onclick='selectEmployee(this, #{ selectedEmployee.id }, \"#{ selectedEmployee.name }\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name}</button>")
     selectedEmployee = null
 
 @removeEmployee = ->
   if selectedEmployee?
+    $("#employee-#{selectedEmployee.id}").remove()
     $(selectedEmployee.element).remove()
     $('#non-selected-employees').append("<button type='button' onclick='selectEmployee(this, #{ selectedEmployee.id }, \"#{ selectedEmployee.name }\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name}</button>")
     selectedEmployee = null

@@ -72,8 +72,9 @@ class TrainingExecutionsController < ApplicationController
     @selected_employees = []
   end
 
+  #TODO REVISAR COMO LISTA
   def create_attendances
-
+    employees = params[:employees]
   end
 
   private

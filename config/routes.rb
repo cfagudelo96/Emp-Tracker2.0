@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :training_executions do
     member do
       get 'add_attendances'
-      post 'create_attendances'
+      patch 'create_attendances'
     end
   end
   resources :employees
