@@ -43,6 +43,9 @@
               <p><%= training_execution.topic %> (<%= training_execution.category %>)</p>
               <p><%= training_execution.date.strftime('%d/%m/%y %R') %></p>
               <div class="pull-right">
+                <%= link_to add_attendances_training_execution_path(training_execution), class: 'btn btn-default' do %>
+                  Registrar asistencias
+                <% end %>
                 <%= link_to training_execution, class: 'btn btn-info' do %>
                   <%= fa_icon('info') %>
                 <% end %>

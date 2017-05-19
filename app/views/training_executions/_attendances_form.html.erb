@@ -1,0 +1,28 @@
+<%= form_for @training_execution, url: save_attendances_training_execution_path do |f| %>
+  <div class="row">
+    <div class="col-md-6 col-xs-11">
+      <div class="list-group" id="non-selected-employees">
+        <% @employees.each do |employee| %>
+          <button type="button" onclick="selectEmployee(this, <%= employee.id %>, '<%= employee.name %>')" class="list-group-item list-group-item-compact"><%= employee %></button>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-1 col-xs-1">
+      <div class="margin-bottom">
+        <button type="button" onclick="addEmployee()" class="btn btn-default full-width"><%= fa_icon('angle-right') %></button>
+      </div>
+      <div class="margin-bottom">
+        <button type="button" onclick="removeEmployee()" class="btn btn-default full-width"><%= fa_icon('angle-left') %></button>
+      </div>
+    </div>
+    <div class="col-md-5 col-xs-12">
+      <div class="list-group" id="selected-employees">
+        <% @selected_employees.each do |employee| %>
+          <button type="button" onclick="selectEmployee(this, <%= employee.id %>, '<%= employee.name %>')" class="list-group-item list-group-item-compact"><%= employee %></button>
+          <%= hidden_field_tag 'employees_id[]', employee.id, id: "employee-#{employee.id}" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit value: 'Guardar', class: 'btn btn-default' %>
+<% end %>

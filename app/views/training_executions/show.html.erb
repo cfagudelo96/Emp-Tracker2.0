@@ -1,38 +1,50 @@
 <h1><%= @training_execution.topic %></h1>
 
-<h4>Categoría</h4>
-<p><%= @training_execution.category %></p>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h4>Categoría</h4>
+    <p><%= @training_execution.category %></p>
 
-<% if @training_execution.objective.present? %>
-  <h4>Objetivo</h4>
-  <p><%= @training_execution.objective %></p>
-<% end %>
+    <% if @training_execution.objective.present? %>
+      <h4>Objetivo</h4>
+      <p><%= @training_execution.objective %></p>
+    <% end %>
 
-<h4>Sede</h4>
-<p><%= Company.find(@training_execution.company_id) %></p>
+    <h4>Sede</h4>
+    <p><%= Company.find(@training_execution.company_id) %></p>
 
-<% if @training_execution.area_id.present? %>
-  <h4>Área responsable</h4>
-  <p><%= Area.find(@training_execution.area_id) %></p>
-<% end %>
+    <% if @training_execution.area_id.present? %>
+      <h4>Área responsable</h4>
+      <p><%= Area.find(@training_execution.area_id) %></p>
+    <% end %>
 
-<% if @training_execution.collaborator_id.present? %>
-  <h4>Colaborador responsable</h4>
-  <p><%= Employee.find(@training_execution.collaborator_id) %></p>
-<% end %>
+    <% if @training_execution.collaborator_id.present? %>
+      <h4>Colaborador responsable</h4>
+      <p><%= Employee.find(@training_execution.collaborator_id) %></p>
+    <% end %>
 
-<h4>Fecha</h4>
-<p><%= @training_execution.date.strftime('%d/%m/%y %R') %></p>
+    <h4>Fecha</h4>
+    <p><%= @training_execution.date.strftime('%d/%m/%y %R') %></p>
 
-<h4>Intensidad horaria</h4>
-<p><%= @training_execution.hourly_intensity %></p>
+    <h4>Intensidad horaria</h4>
+    <p><%= @training_execution.hourly_intensity %></p>
 
-<h4>Formador</h4>
-<p><%= @training_execution.trainer %></p>
+    <h4>Formador</h4>
+    <p><%= @training_execution.trainer %></p>
 
-<h4><%= @training_execution.internal ? 'Formación interna' : 'Formación externa' %></h4>
+    <h4><%= @training_execution.internal ? 'Formación interna' : 'Formación externa' %></h4>
 
-<h4><%= @training_execution.planned ? 'Formación planeada' : 'Formación no planeada' %></h4>
+    <h4><%= @training_execution.planned ? 'Formación planeada' : 'Formación no planeada' %></h4>
+  </div>
+  <div class="col-xs-12 col-md-6">
+    <h4>Asistentes</h4>
+    <% @training_execution.employees.each do |employee| %>
+      <ul>
+        <li><%= employee %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>
 
 <%= link_to training_executions_path, class: 'btn btn-default' do %>
   Atras <%= fa_icon('arrow-left') %>

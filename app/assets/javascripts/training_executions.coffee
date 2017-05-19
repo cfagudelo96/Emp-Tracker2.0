@@ -35,7 +35,6 @@ selectedEmployee = null
     element: element
   }
 
-#TODO Añadir y remover hidden inputs
 @addEmployee = ->
   if selectedEmployee?
     divSelectedEmployees = $('#selected-employees')

@@ -1,5 +1,7 @@
 class TrainingExecutionsController < ApplicationController
-  before_action :set_training_execution, only: [:show, :edit, :update, :destroy, :add_attendances, :create_attendances]
+  before_action :set_training_execution, only: [
+      :show, :edit, :update, :destroy, :add_attendances, :edit_attendances, :save_attendances
+  ]
 
   # GET /training_executions
   # GET /training_executions.json
@@ -72,15 +74,20 @@ class TrainingExecutionsController < ApplicationController
     @selected_employees = []
   end
 
-  #TODO REVISAR COMO LISTA
-  def create_attendances
-    employees_id = params[:employees_id]
+  def edit_attendances
+    @employees = Employee.where.not(id: @training_execution.employees.ids)
+    @selected_employees = @training_execution.employees
+  end
+
+  def save_attendances
+    @training_execution.attendances.destroy_all
+    employees_id = params[:employees_id] ? params[:employees_id] : []
     employees_id.each do |employee_id|
       @training_execution.attendances.create(employee: Employee.find(employee_id))
     end
     respond_to do |format|
       if @training_execution.save
-        format.html { redirect_to @training_execution, notice: 'Training execution was successfully created.' }
+        format.html { redirect_to @training_execution, notice: 'Se registró exitósamente las asistencias a la formación ejecutada.' }
         format.json { render :show, status: :ok, location: @training_execution }
       else
         format.html { render :add_attendances }
