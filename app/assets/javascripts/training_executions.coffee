@@ -40,7 +40,7 @@ selectedEmployee = null
   if selectedEmployee?
     divSelectedEmployees = $('#selected-employees')
     divSelectedEmployees.append("<button type='button' onclick='selectEmployee(this, #{ selectedEmployee.id }, \"#{ selectedEmployee.name }\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name}</button>")
-    divSelectedEmployees.append("<input type='hidden' name='employees' value='#{selectedEmployee.id}' id='employee-#{selectedEmployee.id}'>")
+    divSelectedEmployees.append("<input type='hidden' name='employees_id[]' value='#{selectedEmployee.id}' id='employee-#{selectedEmployee.id}'>")
     $(selectedEmployee.element).remove()
     selectedEmployee = null
 

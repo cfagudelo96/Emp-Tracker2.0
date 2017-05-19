@@ -21,11 +21,11 @@
       <div class="list-group" id="selected-employees">
         <% @selected_employees.each do |employee| %>
           <button type="button" onclick="selectedEmployee(this, <%= employee.id %>, '<%= employee.name %>')" class="btn btn-default"></button>
-          <%= hidden_field_tag 'employees', employee.id, id: "employee-#{employee.id}" %>
+          <%= hidden_field_tag 'employees_id[]', employee.id, id: "employee-#{employee.id}" %>
       <% end %>
       </div>
     </div>
   </div>
-  <%= f.submit value: 'Guardar' %>
+  <%= f.submit value: 'Guardar', class: 'btn btn-default' %>
 <% end %>
 

@@ -74,7 +74,19 @@ class TrainingExecutionsController < ApplicationController
 
   #TODO REVISAR COMO LISTA
   def create_attendances
-    employees = params[:employees]
+    employees_id = params[:employees_id]
+    employees_id.each do |employee_id|
+      @training_execution.attendances.create(employee: Employee.find(employee_id))
+    end
+    respond_to do |format|
+      if @training_execution.save
+        format.html { redirect_to @training_execution, notice: 'Training execution was successfully created.' }
+        format.json { render :show, status: :ok, location: @training_execution }
+      else
+        format.html { render :add_attendances }
+        format.json { render json: @training_execution.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
