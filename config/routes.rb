@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   end
   resources :training_executions do
     member do
-      get 'add_attendances'
-      get 'edit_attendances'
+      get 'register_attendances'
       patch 'save_attendances'
     end
   end

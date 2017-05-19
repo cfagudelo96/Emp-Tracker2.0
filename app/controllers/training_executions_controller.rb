@@ -1,7 +1,5 @@
 class TrainingExecutionsController < ApplicationController
-  before_action :set_training_execution, only: [
-      :show, :edit, :update, :destroy, :add_attendances, :edit_attendances, :save_attendances
-  ]
+  before_action :set_training_execution, only: [:show, :edit, :update, :destroy, :register_attendances, :save_attendances]
 
   # GET /training_executions
   # GET /training_executions.json
@@ -69,12 +67,7 @@ class TrainingExecutionsController < ApplicationController
     end
   end
 
-  def add_attendances
-    @employees = Employee.where('active = ?', true)
-    @selected_employees = []
-  end
-
-  def edit_attendances
+  def register_attendances
     @employees = Employee.where.not(id: @training_execution.employees.ids)
     @selected_employees = @training_execution.employees
   end
@@ -90,7 +83,7 @@ class TrainingExecutionsController < ApplicationController
         format.html { redirect_to @training_execution, notice: 'Se registró exitósamente las asistencias a la formación ejecutada.' }
         format.json { render :show, status: :ok, location: @training_execution }
       else
-        format.html { render :add_attendances }
+        format.html { render :register_attendances }
         format.json { render json: @training_execution.errors, status: :unprocessable_entity }
       end
     end

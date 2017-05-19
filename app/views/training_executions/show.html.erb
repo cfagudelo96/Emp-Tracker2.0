@@ -43,12 +43,15 @@
         <li><%= employee %></li>
       </ul>
     <% end %>
+    <%= link_to register_attendances_training_execution_path, class: 'btn btn-default' do %>
+      Modificar asistencias
+    <% end %>
   </div>
 </div>
 
 <%= link_to training_executions_path, class: 'btn btn-default' do %>
-  Atras <%= fa_icon('arrow-left') %>
+  <%= fa_icon('arrow-left') %>
 <% end %>
 <%= link_to edit_training_execution_path(@training_execution), class: 'btn btn-warning pull-right' do %>
-  Editar <%= fa_icon('pencil') %>
+  <%= fa_icon('pencil') %>
 <% end %>
