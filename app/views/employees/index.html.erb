@@ -7,8 +7,8 @@
       <tr>
         <td>
           <h4><%= employee %> <%= raw '<small>(Inactivo)</small>' unless employee.active %></h4>
-          <p><%= Area.find(employee.area_id) %> (<%= employee.position %>)</p>
-          <p><%= Company.find(employee.company_id) %></p>
+          <p><%= employee.area %> (<%= employee.position %>)</p>
+          <p><%= employee.company %></p>
           <span class="pull-right">
             <%= link_to employee, class: 'btn btn-info' do %>
               <%= fa_icon('info') %>
