@@ -4,13 +4,13 @@
 <p>C.C. <%= @employee.identification %></p>
 
 <h4>Área</h4>
-<p><%= Area.find(@employee.area_id) %></p>
+<p><%= @employee.area %></p>
 
 <h4>Cargo</h4>
 <p><%= @employee.position %></p>
 
 <h4>Compañía</h4>
-<p><%= Company.find(@employee.company_id) %></p>
+<p><%= @employee.company %></p>
 
 <h4>Fecha de ingreso</h4>
 <p><%= @employee.admission_date %></p>

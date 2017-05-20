@@ -10,6 +10,11 @@ class TrainingExecutionsController < ApplicationController
   # GET /training_executions/1
   # GET /training_executions/1.json
   def show
+    @aide = if @training_execution.area_id.present?
+              Area.find(@training_execution.area_id)
+            elsif @training_execution.collaborator_id.present?
+              Employee.find(@training_execution.collaborator_id)
+            end
   end
 
   # GET /training_executions/new

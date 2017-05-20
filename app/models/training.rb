@@ -11,9 +11,9 @@ class Training < ApplicationRecord
   validates :trainer, presence: true
   validates :company_id, presence: true
 
-  validate :area_and_collaborator_validator
+  validate :area_collaborator_validator
 
-  def area_and_collaborator_validator
+  def area_collaborator_validator
     if area_id.blank? && collaborator_id.blank?
       errors.add(:area_id, 'can not be blank if collaborator is also blank')
       errors.add(:collaborator_id, 'can not be blank if area is also blank')

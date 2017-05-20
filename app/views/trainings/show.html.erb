@@ -9,16 +9,16 @@
 <% end %>
 
 <h4>Sede</h4>
-<p><%= Company.find(@training.company_id) %></p>
+<p><%= @training.company %></p>
 
 <% if @training.area_id.present? %>
   <h4>Área responsable</h4>
-  <p><%= Area.find(@training.area_id) %></p>
+  <p><%= @aide %></p>
 <% end %>
 
 <% if @training.collaborator_id.present? %>
   <h4>Colaborador responsable</h4>
-  <p><%= Employee.find(@training.collaborator_id) %></p>
+  <p><%= @aide %></p>
 <% end %>
 
 <h4>Fecha</h4>

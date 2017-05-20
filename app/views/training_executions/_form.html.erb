@@ -1,7 +1,7 @@
 <%= form_for(training_execution) do |f| %>
   <% if training_execution.errors.any? %>
     <div id="error_explanation" class="alert alert-danger" role="alert">
-      <h2><%= pluralize(training_execution.errors.count, "error") %> no permitieron guardar la formación:</h2>
+      <h2><%= pluralize(training_execution.errors.count, 'error') %> no permitieron guardar la formación:</h2>
 
       <ul>
         <% training_execution.errors.full_messages.each do |message| %>

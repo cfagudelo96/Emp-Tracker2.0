@@ -9,6 +9,8 @@
           <h4><%= employee %> <%= raw '<small>(Inactivo)</small>' unless employee.active %></h4>
           <p><%= employee.area %> (<%= employee.position %>)</p>
           <p><%= employee.company %></p>
+        </td>
+        <td>
           <span class="pull-right">
             <%= link_to employee, class: 'btn btn-info' do %>
               <%= fa_icon('info') %>
