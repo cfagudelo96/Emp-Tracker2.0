@@ -4,6 +4,10 @@
   <%= form_for @training_execution, url: save_attendances_training_execution_path do |f| %>
     <div class="row">
       <div class="col-md-6 col-xs-11">
+        <div class="input-group">
+          <input type="text" placeholder="Filtrar..." onchange="filterEmployees()" class="form-control" id="filter">
+          <span class="input-group-addon"><%= fa_icon('search') %></span>
+        </div>
         <div class="list-group" id="non-selected-employees">
           <% @employees.each do |employee| %>
             <button type="button" onclick="selectEmployee(this, <%= employee.id %>, '<%= employee.name %>')" class="list-group-item list-group-item-compact"><%= employee %></button>

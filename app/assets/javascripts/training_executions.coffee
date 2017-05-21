@@ -49,3 +49,8 @@ selectedEmployee = null
     $(selectedEmployee.element).remove()
     $('#non-selected-employees').append("<button type='button' onclick='selectEmployee(this, #{ selectedEmployee.id }, \"#{ selectedEmployee.name }\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name}</button>")
     selectedEmployee = null
+
+#TODO Filter
+@filterEmployees = ->
+  nombre = $('#filter').val().toUpperCase()
+
