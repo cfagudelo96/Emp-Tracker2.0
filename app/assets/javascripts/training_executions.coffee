@@ -26,20 +26,20 @@ selectedEmployee = null
     $('#collaborator_form_group').show('slow')
     $('#training_execution_area_id').val(null)
 
-@selectEmployee = (element, employee_id, employee_name) ->
+@selectEmployee = (element, employee_id, employee_name, employee_identification) ->
   $('.active').removeClass('active')
   $(element).addClass('active')
   selectedEmployee = {
     id: employee_id,
     name: employee_name,
+    identification: employee_identification
     element: element
   }
 
 @addEmployee = ->
   if selectedEmployee?
-    divSelectedEmployees = $('#selected-employees')
-    divSelectedEmployees.append("<button type='button' onclick='selectEmployee(this, #{ selectedEmployee.id }, \"#{ selectedEmployee.name }\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name}</button>")
-    divSelectedEmployees.append("<input type='hidden' name='employees_id[]' value='#{selectedEmployee.id}' id='employee-#{selectedEmployee.id}'>")
+    $('#selected-employees').append("<button type='button' onclick='selectEmployee(this, #{selectedEmployee.id}, \"#{selectedEmployee.name}\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name})</button>")
+    $('#hidden-inputs').append("<input type='hidden' name='employees_id[]' value='#{selectedEmployee.id}' id='employee-#{selectedEmployee.id}'>")
     $(selectedEmployee.element).remove()
     selectedEmployee = null
 
@@ -47,10 +47,16 @@ selectedEmployee = null
   if selectedEmployee?
     $("#employee-#{selectedEmployee.id}").remove()
     $(selectedEmployee.element).remove()
-    $('#non-selected-employees').append("<button type='button' onclick='selectEmployee(this, #{ selectedEmployee.id }, \"#{ selectedEmployee.name }\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name}</button>")
+    $('#non-selected-employees').append("<button type='button' onclick='selectEmployee(this, #{selectedEmployee.id}, \"#{selectedEmployee.name}\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name}</button>")
     selectedEmployee = null
 
-#TODO Filter
 @filterEmployees = ->
-  nombre = $('#filter').val().toUpperCase()
+  filter = $('#employees-filter').val().toUpperCase()
+  nonSelectedEmployees = $('#non-selected-employees').children()
+  filterElement(filter, $(nonSelectedEmployee)) for nonSelectedEmployee in nonSelectedEmployees
 
+filterElement = (filter, element) ->
+  if element.text().toUpperCase().indexOf(filter) > -1
+    element.show()
+  else
+    element.hide()

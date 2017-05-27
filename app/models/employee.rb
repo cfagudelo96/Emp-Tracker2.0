@@ -10,6 +10,6 @@ class Employee < ApplicationRecord
   validates :admission_date, presence: true
 
   def to_s
-    name
+    "#{name} (C.C. #{identification})"
   end
 end
