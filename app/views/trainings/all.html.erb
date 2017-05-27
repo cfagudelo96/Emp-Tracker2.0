@@ -14,9 +14,6 @@
             </td>
             <td>
               <span class="pull-right">
-                <%= link_to new_training_execution_path(training_id: training.id), class: 'btn btn-default' do %>
-                  Registrar ejecución
-                <% end %>
                 <%= link_to training, class: 'btn btn-info' do %>
                   <%= fa_icon('info') %>
                 <% end %>
@@ -34,6 +31,7 @@
       </table>
     </div>
   </div>
+
   <div class="col-md-6 col-xs-12">
     <h2>Formaciones ejecutadas</h2>
     <div class="table-responsive">
@@ -47,9 +45,6 @@
             </td>
             <td>
               <span class="pull-right">
-                <%= link_to register_attendances_training_execution_path(training_execution), class: 'btn btn-default' do %>
-                  Registrar asistencias
-                <% end %>
                 <%= link_to training_execution, class: 'btn btn-info' do %>
                   <%= fa_icon('info') %>
                 <% end %>

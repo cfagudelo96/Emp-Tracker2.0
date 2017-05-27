@@ -49,9 +49,14 @@
   </div>
 </div>
 
-<%= link_to training_executions_path, class: 'btn btn-default' do %>
-  <%= fa_icon('arrow-left') %>
-<% end %>
+<div class="btn-group" role="group">
+  <%= link_to training_executions_path, class: 'btn btn-default' do %>
+    <%= fa_icon('arrow-left') %>
+  <% end %>
+  <%= link_to register_attendances_training_execution_path(@training_execution), class: 'btn btn-default' do %>
+    Registrar asistencias
+  <% end %>
+</div>
 <%= link_to edit_training_execution_path(@training_execution), class: 'btn btn-warning pull-right' do %>
   <%= fa_icon('pencil') %>
 <% end %>

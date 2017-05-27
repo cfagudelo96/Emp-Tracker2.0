@@ -32,9 +32,14 @@
 
 <h4><%= @training.internal ? 'Formación interna' : 'Formación externa' %></h4>
 
-<%= link_to trainings_path, class: 'btn btn-default' do %>
-  <%= fa_icon('arrow-left') %>
-<% end %>
+<div class="btn-group" role="group">
+  <%= link_to trainings_path, class: 'btn btn-default' do %>
+    <%= fa_icon('arrow-left') %>
+  <% end %>
+  <%= link_to new_training_execution_path(training_id: @training.id), class: 'btn btn-default' do %>
+    Registrar ejecución
+  <% end %>
+</div>
 <%= link_to edit_training_path(@training), class: 'btn btn-warning pull-right' do %>
   <%= fa_icon('pencil') %>
 <% end %>
