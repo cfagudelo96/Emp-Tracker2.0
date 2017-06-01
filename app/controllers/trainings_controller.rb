@@ -4,7 +4,7 @@ class TrainingsController < ApplicationController
   # GET /trainings
   # GET /trainings.json
   def index
-    @trainings = Training.all
+    @trainings = Training.paginate(page: params[:page])
   end
 
   def all

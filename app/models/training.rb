@@ -3,6 +3,8 @@ class Training < ApplicationRecord
 
   belongs_to :company
 
+  self.per_page = 10
+
   validates :category, presence: true
   validates :topic, presence: true
   validates :objective, presence: true
