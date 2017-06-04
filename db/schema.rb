@@ -12,67 +12,67 @@
 
 ActiveRecord::Schema.define(version: 20170516022318) do
 
-  create_table "areas", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'areas', force: :cascade do |t|
+    t.string   'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "attendances", force: :cascade do |t|
-    t.integer  "training_execution_id"
-    t.integer  "employee_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+  create_table 'attendances', force: :cascade do |t|
+    t.integer  'training_execution_id'
+    t.integer  'employee_id'
+    t.datetime 'created_at',            null: false
+    t.datetime 'updated_at',            null: false
   end
 
-  create_table "companies", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'companies', force: :cascade do |t|
+    t.string   'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "employees", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "identification"
-    t.integer  "area_id"
-    t.date     "admission_date"
-    t.boolean  "active"
-    t.string   "position"
-    t.integer  "company_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+  create_table 'employees', force: :cascade do |t|
+    t.string   'name'
+    t.integer  'identification'
+    t.integer  'area_id'
+    t.date     'admission_date'
+    t.boolean  'active'
+    t.string   'position'
+    t.integer  'company_id'
+    t.datetime 'created_at',     null: false
+    t.datetime 'updated_at',     null: false
   end
 
-  create_table "training_executions", force: :cascade do |t|
-    t.string   "category"
-    t.string   "topic"
-    t.text     "objective"
-    t.datetime "date"
-    t.float    "hourly_intensity"
-    t.string   "trainer"
-    t.boolean  "internal"
-    t.integer  "area_id"
-    t.integer  "collaborator_id"
-    t.integer  "company_id"
-    t.integer  "planned_training_id"
-    t.boolean  "planned"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+  create_table 'training_executions', force: :cascade do |t|
+    t.string   'category'
+    t.string   'topic'
+    t.text     'objective'
+    t.datetime 'date'
+    t.float    'hourly_intensity'
+    t.string   'trainer'
+    t.boolean  'internal'
+    t.integer  'area_id'
+    t.integer  'collaborator_id'
+    t.integer  'company_id'
+    t.integer  'planned_training_id'
+    t.boolean  'planned'
+    t.datetime 'created_at',          null: false
+    t.datetime 'updated_at',          null: false
   end
 
-  create_table "trainings", force: :cascade do |t|
-    t.string   "category"
-    t.string   "topic"
-    t.text     "objective"
-    t.datetime "date"
-    t.float    "hourly_intensity"
-    t.string   "trainer"
-    t.boolean  "internal"
-    t.integer  "area_id"
-    t.integer  "collaborator_id"
-    t.integer  "company_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+  create_table 'trainings', force: :cascade do |t|
+    t.string   'category'
+    t.string   'topic'
+    t.text     'objective'
+    t.datetime 'date'
+    t.float    'hourly_intensity'
+    t.string   'trainer'
+    t.boolean  'internal'
+    t.integer  'area_id'
+    t.integer  'collaborator_id'
+    t.integer  'company_id'
+    t.datetime 'created_at',       null: false
+    t.datetime 'updated_at',       null: false
   end
 
 end

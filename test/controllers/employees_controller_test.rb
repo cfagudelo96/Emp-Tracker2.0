@@ -3,6 +3,8 @@ require 'test_helper'
 class EmployeesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @employee = employees(:one)
+    @area = areas(:one)
+    @company = companies(:one)
   end
 
   test "should get index" do
@@ -17,7 +19,7 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create employee" do
     assert_difference('Employee.count') do
-      post employees_url, params: { employee: { active: @employee.active, admission_date: @employee.admission_date, area_id: @employee.area_id, company_id: @employee.company_id, identification: @employee.identification, name: @employee.name, position: @employee.position } }
+      post employees_url, params: { employee: { name: @employee.name, identification: 1, admission_date: @employee.admission_date, position: @employee.position, company_id: @company.id, area_id: @area.id, active: @employee.active } }
     end
 
     assert_redirected_to employee_url(Employee.last)
@@ -34,7 +36,7 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update employee" do
-    patch employee_url(@employee), params: { employee: { active: @employee.active, admission_date: @employee.admission_date, area_id: @employee.area_id, company_id: @employee.company_id, identification: @employee.identification, name: @employee.name, position: @employee.position } }
+    patch employee_url(@employee), params: { employee: { name: @employee.name, identification: 1, admission_date: @employee.admission_date, position: @employee.position, company_id: @company.id, area_id: @area.id, active: @employee.active } }
     assert_redirected_to employee_url(@employee)
   end
 

@@ -78,11 +78,7 @@ class TrainingExecutionsController < ApplicationController
   end
 
   def save_attendances
-    @training_execution.attendances.destroy_all
-    employees_id = params[:employees_id] ? params[:employees_id] : []
-    employees_id.each do |employee_id|
-      @training_execution.attendances.create(employee: Employee.find(employee_id))
-    end
+    @training_execution.save_attendances(params[:employees_id])
     respond_to do |format|
       if @training_execution.save
         format.html { redirect_to @training_execution, notice: 'Se registró exitósamente las asistencias a la formación ejecutada.' }

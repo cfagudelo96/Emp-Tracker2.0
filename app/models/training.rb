@@ -1,5 +1,8 @@
 class Training < ApplicationRecord
-  CATEGORIES = %w(Capacitación Inducción Entrenamiento Otro)
+  CATEGORIES = %w[Capacitación Inducción Entrenamiento Otro]
+
+  has_one :area
+  has_one :collaborators, class_name: Employee
 
   belongs_to :company
 
@@ -11,7 +14,6 @@ class Training < ApplicationRecord
   validates :date, presence: true
   validates :hourly_intensity, numericality: { greater_than_or_equal_to: 0 }
   validates :trainer, presence: true
-  validates :company_id, presence: true
 
   validate :area_collaborator_validator
 

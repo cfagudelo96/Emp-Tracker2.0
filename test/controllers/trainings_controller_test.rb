@@ -3,42 +3,50 @@ require 'test_helper'
 class TrainingsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @training = trainings(:one)
+    @area = areas(:one)
+    @collaborator = employees(:one)
+    @company = companies(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get trainings_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get all' do
+    get all_trainings_path
+    assert_response :success
+  end
+
+  test 'should get new' do
     get new_training_url
     assert_response :success
   end
 
-  test "should create training" do
+  test 'should create training' do
     assert_difference('Training.count') do
-      post trainings_url, params: { training: { company_id: @training.company_id, date: @training.date, hourly_intensity: @training.hourly_intensity, internal: @training.internal, objective: @training.objective, planned: @training.planned, topic: @training.topic, trainer: @training.trainer, type: @training.type } }
+      post trainings_url, params: { training: { category: @training.category, topic: @training.topic, objective: @training.objective, date: @training.date, hourly_intensity: @training.hourly_intensity, company_id: @company.id, internal: @training.internal, trainer: @training.trainer, area_id: @area.id } }
     end
 
     assert_redirected_to training_url(Training.last)
   end
 
-  test "should show training" do
+  test 'should show training' do
     get training_url(@training)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_training_url(@training)
     assert_response :success
   end
 
-  test "should update training" do
-    patch training_url(@training), params: { training: { company_id: @training.company_id, date: @training.date, hourly_intensity: @training.hourly_intensity, internal: @training.internal, objective: @training.objective, planned: @training.planned, topic: @training.topic, trainer: @training.trainer, type: @training.type } }
+  test 'should update training' do
+    patch training_url(@training), params: { training: { category: @training.category, topic: @training.topic, objective: @training.objective, date: @training.date, hourly_intensity: @training.hourly_intensity, company_id: @company.id, internal: @training.internal, trainer: @training.trainer, area_id: @area.id } }
     assert_redirected_to training_url(@training)
   end
 
-  test "should destroy training" do
+  test 'should destroy training' do
     assert_difference('Training.count', -1) do
       delete training_url(@training)
     end

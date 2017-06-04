@@ -2,6 +2,9 @@ class TrainingExecution < ApplicationRecord
   has_many :attendances
   has_many :employees, through: :attendances
 
+  has_one :area
+  has_one :collaborators, class_name: Employee
+
   belongs_to :company
 
   self.per_page = 10
@@ -11,7 +14,6 @@ class TrainingExecution < ApplicationRecord
   validates :date, presence: true
   validates :hourly_intensity, numericality: { greater_than_or_equal_to: 0 }
   validates :trainer, presence: true
-  validates :company_id, presence: true
 
   validate :area_collaborator_validator
 
@@ -22,6 +24,14 @@ class TrainingExecution < ApplicationRecord
     elsif area_id.present? && collaborator_id.present?
       errors.add(:area_id, 'can not be present if collaborator is also present')
       errors.add(:collaborator_id, 'can not be present if area is also present')
+    end
+  end
+
+  def save_attendances(employees_id)
+    attendances.destroy_all
+    employees_id ||= []
+    employees_id.each do |employee_id|
+      attendances.create(employee: Employee.find(employee_id))
     end
   end
 

@@ -1,7 +1,19 @@
 require 'test_helper'
 
 class AreaTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'should not save area without name' do
+    area = Area.new
+    assert_not area.save
+  end
+
+  test 'should not save area without unique name' do
+    Area.new(name: 'Test').save
+    area = Area.new(name: 'Test')
+    assert_not area.save
+  end
+
+  test 'should save area' do
+    area = Area.new(name: 'Test')
+    assert area.save
+  end
 end
