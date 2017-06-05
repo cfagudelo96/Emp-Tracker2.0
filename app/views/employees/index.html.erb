@@ -1,5 +1,32 @@
 <h1>Empleados</h1>
 
+<div class="row margin-bottom">
+  <%= form_tag employees_path, method: :get do %>
+    <div class="col-xs-12 col-md-8">
+      <div class="form-group" id="filters">
+        <%= text_field_tag :name, "#{params[:name]}", { placeholder: 'Filtrar por...', class: 'form-control' } if params[:name] || params[:identification].blank? && params[:position].blank? && params[:area_id].blank? && params[:company_id].blank? %>
+        <%= number_field_tag :identification, "#{params[:identification]}", { placeholder: 'Filtrar por...', class: 'form-control' } if params[:identification].present? %>
+        <%= text_field_tag :position, "#{params[:position]}", { placeholder: 'Filtrar por...', class: 'form-control' } if params[:position].present? %>
+      </div>
+      <div class="form-group">
+        <%= select_tag :area_id, options_from_collection_for_select(Area.all, 'id', 'name', params[:area_id]), { class: 'form-control' } %>
+        <%= select_tag :company_id, options_from_collection_for_select(Company.all, 'id', 'name', params[:company_id]), { class: 'form-control' } %>
+      </div>
+      <div class="checkbox">
+        <label><%= check_box_tag :active, 'true', false %> Sólo empleados activos</label>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <div class="form-group">
+        <%= select_tag :filter, options_for_select(Employee::FILTER_OPTIONS), class: 'form-control', onchange: 'filterChanged()' %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-1">
+      <%= submit_tag 'Filtrar', class: 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>
+
 <div class="table-responsive margin-bottom">
   <table class="table table-striped">
     <tbody>
@@ -34,3 +61,14 @@
 <%= link_to new_employee_path, class: 'btn btn-default' do %>
   <%= fa_icon('plus') %>
 <% end %>
+
+<script>
+    $(document).ready(function () {
+        var area = $('#area_id');
+        area.removeAttr('name');
+        area.hide();
+        var company = $('#company_id');
+        company.removeAttr('name');
+        company.hide();
+    })
+</script>
