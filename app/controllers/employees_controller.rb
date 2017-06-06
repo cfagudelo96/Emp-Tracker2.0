@@ -4,6 +4,8 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
+    gon.areas = Area.all
+    gon.companies = Company.all
     @employees = Employee.filter_employees(params)
     @employees = @employees.paginate(page: params[:page])
   end
