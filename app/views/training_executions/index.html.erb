@@ -6,7 +6,7 @@
     <% @training_executions.each do |training_execution| %>
       <tr>
         <td>
-          <p><%= training_execution.topic %> (<%= training_execution.category %>)</p>
+          <p><%= training_execution %> (<%= training_execution.category %>)</p>
           <p><%= training_execution.date.strftime('%d/%m/%y %R') %></p>
         </td>
         <td>

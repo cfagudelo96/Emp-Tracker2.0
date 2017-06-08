@@ -1,0 +1,41 @@
+.footer-distributed {
+  background-color: #292c2f;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: normal 16px sans-serif;
+
+  padding: 30px 60px;
+  margin-top: 20px;
+
+  p {
+    color:  #8f9296;
+    font-size: 14px;
+    margin: 0px 0px 5px;
+  }
+
+  p.footer-links {
+    font-size:18px;
+    font-weight: bold;
+    color:  #ffffff;
+    margin: 0 0 10px;
+    padding: 0;
+  }
+
+  .footer-link-icon {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: #43484b;
+    border-radius: 2px;
+
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+
+    margin-left: 3px;
+    margin-bottom: 10px;
+  }
+}

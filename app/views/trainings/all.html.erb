@@ -9,7 +9,7 @@
         <% @trainings.each do |training| %>
           <tr>
             <td>
-              <p><%= training.topic %> (<%= training.category %>)</p>
+              <p><%= training %> (<%= training.category %>)</p>
               <p><%= training.date.strftime('%d/%m/%y %R') %></p>
             </td>
             <td>
@@ -40,7 +40,7 @@
         <% @training_executions.each do |training_execution| %>
           <tr>
             <td>
-              <p><%= training_execution.topic %> (<%= training_execution.category %>)</p>
+              <p><%= training_execution %> (<%= training_execution.category %>)</p>
               <p><%= training_execution.date.strftime('%d/%m/%y %R') %></p>
             </td>
             <td>
