@@ -22,14 +22,21 @@
   </div>
   <div class="col-xs-12 col-md-6">
     <h4>Capacitaciones</h4>
-    <div class="table-responsive">
-      <table class="table table-striped">
+    <div class="table-responsive overflowing-box-tall">
+      <table class="table table-striped table-condensed">
         <tbody>
-          <% @trainings.each do |training| %>
+          <% @training_executions.each do |training_execution| %>
             <tr>
               <td>
-                <p><%= training %> (<%= training.category %>)</p>
-                <p><%= training.date.strftime('%d/%m/%y %R') %></p>
+                <p><%= training_execution %> (<%= training_execution.category %>)</p>
+                <p><%= training_execution.date.strftime('%d/%m/%y %R') %></p>
+              </td>
+              <td>
+                <span class="pull-right">
+                  <%= link_to training_execution_path(training_execution), class: 'btn btn-info' do %>
+                    <%= fa_icon('info') %>
+                  <% end %>
+                </span>
               </td>
             </tr>
           <% end %>
@@ -41,9 +48,9 @@
 
 <div>
   <%= link_to employees_path, class: 'btn btn-default' do %>
-      <%= fa_icon('arrow-left') %>
+    <%= fa_icon('arrow-left') %>
   <% end %>
   <%= link_to edit_employee_path(@employee), class: 'btn btn-warning pull-right' do %>
-      <%= fa_icon('pencil') %>
+    <%= fa_icon('pencil') %>
   <% end %>
 </div>

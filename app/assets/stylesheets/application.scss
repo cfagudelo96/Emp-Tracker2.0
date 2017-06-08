@@ -17,6 +17,11 @@
   overflow-y: auto;
 }
 
+.overflowing-box-tall {
+  height: 400px;
+  overflow-y: auto;
+}
+
 .pagination {
   margin: 20px 0px;
   display: inline-block;
