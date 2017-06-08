@@ -31,10 +31,10 @@
   </table>
 </div>
 
-<%= will_paginate @areas %>
-
 <div>
   <%= link_to new_area_path, class: 'btn btn-default' do %>
     <%= fa_icon('plus') %>
   <% end %>
 </div>
+
+<%= will_paginate @areas %>
