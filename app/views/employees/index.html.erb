@@ -50,6 +50,13 @@
         </td>
       </tr>
     <% end %>
+    <% if @employees.empty? %>
+      <tr>
+        <td>
+          No se encontraron registros
+        </td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 </div>

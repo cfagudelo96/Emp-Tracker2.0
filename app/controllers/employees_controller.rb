@@ -13,7 +13,6 @@ class EmployeesController < ApplicationController
   # GET /employees/1
   # GET /employees/1.json
   def show
-    @training_executions = @employee.training_executions
   end
 
   # GET /employees/new

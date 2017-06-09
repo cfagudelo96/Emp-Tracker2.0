@@ -27,6 +27,13 @@
         </td>
       </tr>
     <% end %>
+    <% if @companies.empty? %>
+      <tr>
+        <td>
+          No se encontraron registros
+        </td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 </div>

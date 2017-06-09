@@ -38,11 +38,27 @@
   </div>
   <div class="col-xs-12 col-md-6">
     <h4>Asistentes</h4>
-    <% @training_execution.employees.each do |employee| %>
-      <ul>
-        <li><%= employee %></li>
-      </ul>
-    <% end %>
+    <div class="table-responsive overflowing-box-tall">
+      <table class="table table-striped table-condensed">
+        <tbody>
+          <% @training_execution.employees.each do |employee| %>
+            <tr>
+              <td>
+                <p><%= employee %> <%= raw '<small>(Inactivo)</small>' unless employee.active %></p>
+                <p><%= employee.area %> (<%= employee.position %>)</p>
+              </td>
+              <td>
+                <span class="pull-right">
+                  <%= link_to employee, class: 'btn btn-info' do %>
+                    <%= fa_icon('info') %>
+                  <% end %>
+                </span>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
     <%= link_to register_attendances_training_execution_path, class: 'btn btn-default' do %>
       Modificar asistencias
     <% end %>
