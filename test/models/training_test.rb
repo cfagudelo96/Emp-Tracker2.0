@@ -98,4 +98,36 @@ class TrainingTest < ActiveSupport::TestCase
                             company_id: @company.id)
     assert training.save
   end
+
+  test 'should filter trainings by categories' do
+    trainings = Training.by_category('MyString2')
+    assert_equal 1, trainings.size
+  end
+
+  test 'should filter trainings by topic' do
+    trainings = Training.by_topic('MyString2')
+    assert_equal 1, trainings.size
+  end
+
+  test 'should filter trainings by date' do
+    initial_date = Time.new(2017, 4, 6)
+    final_date = Time.new(2017, 4, 8)
+    trainings = Training.by_date(initial_date, final_date)
+    assert_equal 1, trainings.size
+  end
+
+  test 'should filter trainings by area' do
+    trainings = Training.by_area(1)
+    assert_equal 1, trainings.size
+  end
+
+  test 'should filter trainings by collaborator' do
+    trainings = Training.by_collaborator('MyString2')
+    assert_equal 1, trainings.size
+  end
+
+  test 'should filter trainings by companies' do
+    trainings = Training.by_company(1)
+    assert_equal 1, trainings.size
+  end
 end

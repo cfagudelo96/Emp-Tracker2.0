@@ -16,4 +16,9 @@ class CompanyTest < ActiveSupport::TestCase
     company = Company.new(name: 'Test')
     assert company.save
   end
+
+  test 'should filter by name' do
+    companies = Company.by_name('MyString2')
+    assert_equal 1, companies.size
+  end
 end

@@ -16,7 +16,7 @@
     </div>
     <div class="col-xs-12 col-md-3">
       <div class="form-group">
-        <%= select_tag :filter, options_for_select(Employee::FILTER_OPTIONS, params[:filter]), class: 'form-control', onchange: 'filterChanged()' %>
+        <%= select_tag :filter, options_for_select(Employee::FILTER_OPTIONS, params[:filter]), onchange: 'employeesFilterChanged()', class: 'form-control' %>
       </div>
     </div>
     <div class="col-xs-12 col-md-1">

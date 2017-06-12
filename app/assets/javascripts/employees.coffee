@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-@filterChanged = ->
+@employeesFilterChanged = ->
   filters = $('#filters')
   filters.children().remove()
   filter_selected = $('#filter').val()

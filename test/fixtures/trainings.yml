@@ -5,6 +5,7 @@ one:
   category: MyString
   topic: MyString
   objective: MyText
+  area_id: 1
   company_id: 1
   date: 2017-04-07 20:36:49
   hourly_intensity: 1.5
@@ -13,11 +14,12 @@ one:
 
 two:
   id: 2
-  category: MyString
-  topic: MyString
+  category: MyString2
+  topic: MyString2
   objective: MyText
-  company_id: 1
-  date: 2017-04-07 20:36:49
+  collaborator_id: 2
+  company_id: 2
+  date: 2017-03-07 20:36:49
   hourly_intensity: 1.5
   trainer: MyString
   internal: false

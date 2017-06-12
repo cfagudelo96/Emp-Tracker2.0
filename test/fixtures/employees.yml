@@ -12,10 +12,10 @@ one:
 
 two:
   id: 2
-  name: MyString
+  name: MyString2
   identification: 3
-  area_id: 1
-  admission_date: 2017-04-07
-  active: false
-  position: MyString
-  company_id: 1
+  area_id: 2
+  admission_date: 2017-03-07
+  active: true
+  position: MyString2
+  company_id: 2

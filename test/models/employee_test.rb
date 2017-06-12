@@ -54,4 +54,41 @@ class EmployeeTest < ActiveSupport::TestCase
                             company_id: @company.id)
     assert employee.save
   end
+
+  test 'should filter employees by name' do
+    employees = Employee.by_name('MyString2')
+    assert_equal 1, employees.size
+  end
+
+  test 'should filter employees by identification' do
+    employees = Employee.by_identification(2)
+    assert_equal 1, employees.size
+  end
+
+  test 'should filter employees by position' do
+    employees = Employee.by_position('MyString2')
+    assert_equal 1, employees.size
+  end
+
+  test 'should filter employees by area' do
+    employees = Employee.by_area(1)
+    assert_equal 1, employees.size
+  end
+
+  test 'should filter employees by company' do
+    employees = Employee.by_company(1)
+    assert_equal 1, employees.size
+  end
+
+  test 'should filter active employees' do
+    employees = Employee.active
+    assert_equal 1, employees.size
+  end
+
+  test 'should filter employees by admission date' do
+    initial_date = Time.new(2017, 4, 6)
+    final_date = Time.new(2017, 4, 8)
+    employees = Employee.by_admission_date(initial_date, final_date)
+    assert_equal 1, employees.size
+  end
 end

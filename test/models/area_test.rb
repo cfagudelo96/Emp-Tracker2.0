@@ -16,4 +16,9 @@ class AreaTest < ActiveSupport::TestCase
     area = Area.new(name: 'Test')
     assert area.save
   end
+
+  test 'should filter by name' do
+    areas = Area.by_name('MyString2')
+    assert_equal 1, areas.size
+  end
 end

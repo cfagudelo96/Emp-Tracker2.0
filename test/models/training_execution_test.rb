@@ -98,4 +98,41 @@ class TrainingExecutionTest < ActiveSupport::TestCase
                                                company_id: @company.id)
     assert training_execution.save
   end
+
+  test 'should filter training executions by categories' do
+    training_executions = TrainingExecution.by_category('MyString2')
+    assert_equal 1, training_executions.size
+  end
+
+  test 'should filter training executions by topic' do
+    training_executions = TrainingExecution.by_topic('MyString2')
+    assert_equal 1, training_executions.size
+  end
+
+  test 'should filter training executions by date' do
+    initial_date = Time.new(2017, 4, 6)
+    final_date = Time.new(2017, 4, 8)
+    training_executions = TrainingExecution.by_date(initial_date, final_date)
+    assert_equal 1, training_executions.size
+  end
+
+  test 'should filter training executions by area' do
+    training_executions = TrainingExecution.by_area(1)
+    assert_equal 1, training_executions.size
+  end
+
+  test 'should filter training executions by collaborator' do
+    training_executions = TrainingExecution.by_collaborator('MyString')
+    assert_equal 1, training_executions.size
+  end
+
+  test 'should filter training executions by companies' do
+    training_executions = TrainingExecution.by_company(1)
+    assert_equal 1, training_executions.size
+  end
+
+  test 'should filter planned training executions' do
+    training_executions = TrainingExecution.planned
+    assert_equal 1, training_executions.size
+  end
 end

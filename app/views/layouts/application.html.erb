@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body data-action="<%= action_name %>" data-controller="<%= controller_name %>">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">

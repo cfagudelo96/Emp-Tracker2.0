@@ -4,6 +4,9 @@
 
 selectedEmployee = null
 
+@trainingExecutionsFilterChanged = ->
+
+
 @trainingExecutionCategoryChanged = ->
   category_select = $('#training_execution_category')
   if category_select.val() == 'Otro'

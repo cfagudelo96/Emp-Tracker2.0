@@ -1,12 +1,19 @@
 class Training < ApplicationRecord
-  CATEGORIES = %w[Capacitación Inducción Entrenamiento Otro]
+  self.per_page = 10
 
-  has_one :area
-  has_one :collaborators, class_name: Employee
+  CATEGORIES = %w[Capacitación Inducción Entrenamiento Otro].freeze
+  FILTER_OPTIONS = [
+    %w[Categoría category],
+    %w[Tema topic],
+    %w[Fecha date],
+    %w[Área area_id],
+    %w[Colaborador collaborator],
+    %w[Compañía company_id]
+  ].freeze
+
+  has_many :training_executions
 
   belongs_to :company
-
-  self.per_page = 10
 
   validates :category, presence: true
   validates :topic, presence: true
@@ -16,6 +23,24 @@ class Training < ApplicationRecord
   validates :trainer, presence: true
 
   validate :area_collaborator_validator
+
+  scope :by_category, (->(category) { where('category like ?', "%#{category}%") })
+  scope :by_topic, (->(topic) { where('topic like ?', "%#{topic}%") })
+  scope :by_date, (->(initial_date, final_date) { where(date: initial_date..final_date) })
+  scope :by_area, (->(area_id) { where(area_id: area_id) })
+  scope :by_collaborator, (->(collaborator) { Employee.joins(:planned_trainings).where('name like ?', "%#{collaborator}%") })
+  scope :by_company, (->(company_id) { where(company_id: company_id) })
+
+  def self.filter_trainings(params)
+    @trainings = Training.all
+    @trainings = @trainings.by_category(params[:category]) if params[:category].present?
+    @trainings = @trainings.by_topic(params[:topic]) if params[:topic].present?
+    @trainings = @trainings.by_date(params[:initial_date], params[:final_date]) if params[:initial_date].present? && params[:final_date].present?
+    @trainings = @trainings.by_area(params[:area_id]) if params[:area_id].present?
+    @trainings = @trainings.by_collaborator(params[:collaborator_id]) if params[:collaborator_id].present?
+    @trainings = @trainings.by_company(params[:company_id]) if params[:company_id].present?
+    @trainings
+  end
 
   def area_collaborator_validator
     if area_id.blank? && collaborator_id.blank?
