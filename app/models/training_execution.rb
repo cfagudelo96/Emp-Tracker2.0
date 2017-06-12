@@ -18,7 +18,7 @@ class TrainingExecution < ApplicationRecord
   scope :by_topic, (->(topic) { where('topic like ?', "%#{topic}%") })
   scope :by_date, (->(initial_date, final_date) { where(date: initial_date..final_date) })
   scope :by_area, (->(area_id) { where(area_id: area_id) })
-  scope :by_collaborator, (->(collaborator) { Employee.joins(:trainings_given).where('name like ?', "%#{collaborator}%") })
+  scope :by_collaborator, (->(collaborator) { where(collaborator_id: Employee.by_name(collaborator).pluck(:id)) })
   scope :by_company, (->(company_id) { where(company_id: company_id) })
   scope :planned, (-> { where(planned: true) })
 

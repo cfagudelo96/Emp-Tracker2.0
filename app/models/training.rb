@@ -35,9 +35,9 @@ class Training < ApplicationRecord
     @trainings = Training.all
     @trainings = @trainings.by_category(params[:category]) if params[:category].present?
     @trainings = @trainings.by_topic(params[:topic]) if params[:topic].present?
-    @trainings = @trainings.by_date(params[:initial_date], params[:final_date]) if params[:initial_date].present? && params[:final_date].present?
+    @trainings = @trainings.by_date(params[:initial_date].to_time, params[:final_date].to_time) if params[:initial_date].present? && params[:final_date].present?
     @trainings = @trainings.by_area(params[:area_id]) if params[:area_id].present?
-    @trainings = @trainings.by_collaborator(params[:collaborator])
+    @trainings = @trainings.by_collaborator(params[:collaborator]) if params[:collaborator].present?
     @trainings = @trainings.by_company(params[:company_id]) if params[:company_id].present?
     @trainings
   end
