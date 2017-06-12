@@ -28,7 +28,7 @@ class Training < ApplicationRecord
   scope :by_topic, (->(topic) { where('topic like ?', "%#{topic}%") })
   scope :by_date, (->(initial_date, final_date) { where(date: initial_date..final_date) })
   scope :by_area, (->(area_id) { where(area_id: area_id) })
-  scope :by_collaborator, (->(collaborator) { Employee.joins(:planned_trainings).where('name like ?', "%#{collaborator}%") })
+  scope :by_collaborator, (->(collaborator) { where(collaborator_id: Employee.by_name(collaborator).pluck(:id)) })
   scope :by_company, (->(company_id) { where(company_id: company_id) })
 
   def self.filter_trainings(params)
@@ -37,7 +37,7 @@ class Training < ApplicationRecord
     @trainings = @trainings.by_topic(params[:topic]) if params[:topic].present?
     @trainings = @trainings.by_date(params[:initial_date], params[:final_date]) if params[:initial_date].present? && params[:final_date].present?
     @trainings = @trainings.by_area(params[:area_id]) if params[:area_id].present?
-    @trainings = @trainings.by_collaborator(params[:collaborator_id]) if params[:collaborator_id].present?
+    @trainings = @trainings.by_collaborator(params[:collaborator])
     @trainings = @trainings.by_company(params[:company_id]) if params[:company_id].present?
     @trainings
   end
