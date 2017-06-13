@@ -2,21 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).on 'turbolinks:load', ->
-  data = $('body').data();
-  if data.controller == 'trainings' && data.action == 'index'
-    initializeFilterDatePickers()
-
-initializeFilterDatePickers = ->
-  $('#initial-date-picker').datetimepicker({
-    locale: 'es'
-    format: 'DD/MM/YYYY'
-  })
-  $('#final-date-picker').datetimepicker({
-    locale: 'es'
-    format: 'DD/MM/YYYY'
-  })
-
 @trainingCategoryChanged = ->
   category_select = $('#training_category')
   if category_select.val() == 'Otro'
@@ -74,7 +59,14 @@ initializeFilterDatePickers = ->
     html += '</div>'
     html += '</div>'
     filters.append(html)
-    initializeFilterDatePickers()
+    $('#initial-date-picker').datetimepicker({
+      locale: 'es'
+      format: 'DD/MM/YYYY'
+    })
+    $('#final-date-picker').datetimepicker({
+      locale: 'es'
+      format: 'DD/MM/YYYY'
+    })
   else if filter_selected == 'area_id'
     html = '<select name="area_id" id="area_id" class="form-control" >'
     for area in gon.areas

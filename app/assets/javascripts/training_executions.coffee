@@ -4,9 +4,6 @@
 
 selectedEmployee = null
 
-@trainingExecutionsFilterChanged = ->
-
-
 @trainingExecutionCategoryChanged = ->
   category_select = $('#training_execution_category')
   if category_select.val() == 'Otro'
@@ -41,7 +38,7 @@ selectedEmployee = null
 
 @addEmployee = ->
   if selectedEmployee?
-    $('#selected-employees').append("<button type='button' onclick='selectEmployee(this, #{selectedEmployee.id}, \"#{selectedEmployee.name}\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name})</button>")
+    $('#selected-employees').append("<button type='button' onclick='selectEmployee(this, #{selectedEmployee.id}, \"#{selectedEmployee.name}\")' class='list-group-item list-group-item-compact'>#{selectedEmployee.name}</button>")
     $('#hidden-inputs').append("<input type='hidden' name='employees_id[]' value='#{selectedEmployee.id}' id='employee-#{selectedEmployee.id}'>")
     $(selectedEmployee.element).remove()
     selectedEmployee = null

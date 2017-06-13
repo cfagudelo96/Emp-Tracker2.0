@@ -64,7 +64,7 @@
 
   <div class="form-group">
     <%= f.label :hourly_intensity, 'Intensidad horaria' %>
-    <%= f.number_field :hourly_intensity, min: 0, required: true, class: 'form-control' %>
+    <%= f.number_field :hourly_intensity, min: 0, step: :any, required: true, class: 'form-control' %>
   </div>
 
   <div class="form-group">

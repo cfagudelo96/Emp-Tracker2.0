@@ -4,6 +4,8 @@ class TrainingExecutionsController < ApplicationController
   # GET /training_executions
   # GET /training_executions.json
   def index
+    gon.areas = Area.all
+    gon.companies = Company.all
     @training_executions = TrainingExecution.filter_training_executions(params)
     @training_executions = TrainingExecution.paginate(page: params[:page])
   end
@@ -23,7 +25,7 @@ class TrainingExecutionsController < ApplicationController
     if params[:training_id].present?
       @training_execution = TrainingExecution.new(Training.find(params[:training_id]).attributes)
       @training_execution.planned = true
-      @training_execution.planned_training_id = params[:training_id]
+      @training_execution.training_id = params[:training_id]
     else
       @training_execution = TrainingExecution.new
     end
@@ -40,7 +42,7 @@ class TrainingExecutionsController < ApplicationController
 
     respond_to do |format|
       if @training_execution.save
-        format.html { redirect_to @training_execution, notice: 'Training execution was successfully created.' }
+        format.html { redirect_to @training_execution, notice: 'La ejecución de la formación fue creada exitósamente.' }
         format.json { render :show, status: :created, location: @training_execution }
       else
         format.html { render :new }
@@ -54,7 +56,7 @@ class TrainingExecutionsController < ApplicationController
   def update
     respond_to do |format|
       if @training_execution.update(training_execution_params)
-        format.html { redirect_to @training_execution, notice: 'Training execution was successfully updated.' }
+        format.html { redirect_to @training_execution, notice: 'La ejecución de la formación fue actualizada exitósamente.' }
         format.json { render :show, status: :ok, location: @training_execution }
       else
         format.html { render :edit }
@@ -68,7 +70,7 @@ class TrainingExecutionsController < ApplicationController
   def destroy
     @training_execution.destroy
     respond_to do |format|
-      format.html { redirect_to training_executions_url, notice: 'Training execution was successfully destroyed.' }
+      format.html { redirect_to training_executions_url, notice: 'La ejecución de la formación fue eliminada exitósamente.' }
       format.json { head :no_content }
     end
   end
