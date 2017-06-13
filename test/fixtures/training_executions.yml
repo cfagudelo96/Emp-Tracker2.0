@@ -11,7 +11,8 @@ one:
   internal: false
   area_id: 1
   company_id: 1
-  planned: false
+  training_id: 1
+  planned: true
 
 two:
   id: 2
@@ -24,5 +25,4 @@ two:
   internal: false
   collaborator_id: 1
   company_id: 2
-  training_id: 1
-  planned: true
+  planned: false

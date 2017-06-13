@@ -91,4 +91,21 @@ class EmployeeTest < ActiveSupport::TestCase
     employees = Employee.by_admission_date(initial_date, final_date)
     assert_equal 1, employees.size
   end
+
+  test 'should filter employees without trainings' do
+    employees = Employee.without_trainings
+    assert_equal 1, employees.size
+  end
+
+  test 'should filter employees without trainings between dates' do
+    initial_date = Time.new(2016, 4, 6)
+    final_date = Time.new(2018, 4, 8)
+    employees = Employee.without_trainings_between_dates(initial_date, final_date)
+    assert_equal 1, employees.size
+
+    initial_date = Time.new(2015, 4, 6)
+    final_date = Time.new(2016, 4, 8)
+    employees = Employee.without_trainings_between_dates(initial_date, final_date)
+    assert_equal 2, employees.size
+  end
 end

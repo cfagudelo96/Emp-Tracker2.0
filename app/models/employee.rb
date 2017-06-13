@@ -7,7 +7,8 @@ class Employee < ApplicationRecord
     %w[Posición position],
     %w[Fecha\ de\ ingreso admission_date],
     %w[Área area_id],
-    %w[Compañía company_id]
+    %w[Compañía company_id],
+    %w[Sin\ capacitaciones without_trainings]
   ].freeze
 
   has_many :attendances
@@ -29,6 +30,8 @@ class Employee < ApplicationRecord
   scope :by_company, (->(company_id) { where company_id: company_id })
   scope :active, (-> { where active: true })
   scope :by_admission_date, (->(initial_date, final_date) { where(admission_date: initial_date..final_date) })
+  scope :without_trainings, (->{ Employee.left_outer_joins(:training_executions).where(attendances: { id: nil }) })
+  scope :without_trainings_between_dates, (->(initial_date, final_date) { where.not(id: joins(:training_executions).where(training_executions: { date: initial_date..final_date }).select(:id).distinct) })
 
   def self.filter_employees(params)
     @employees = Employee.all
@@ -39,6 +42,13 @@ class Employee < ApplicationRecord
     @employees = @employees.by_company(params[:company_id]) if params[:company_id].present?
     @employees = @employees.active if params[:active]
     @employees = @employees.by_admission_date(params[:initial_date].to_time, params[:final_date].to_time) if params[:initial_date].present? && params[:final_date].present?
+    if params[:filter] == 'without_trainings'
+      if params[:initial_date].present? && params[:final_date].present?
+        @employees.without_trainings_between_dates(params[:initial_date].to_time, params[:final_date].to_time)
+      else
+        @employees = @employees.without_trainings
+      end
+    end
     @employees
   end
 
