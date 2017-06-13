@@ -1,26 +1,28 @@
 <h1>Formaciones planeadas</h1>
 
-<div class="row margin-bottom">
+<div class="row">
   <%= form_tag trainings_path, method: :get do %>
     <div class="col-xs-12 col-md-8">
       <div class="form-group" id="filters">
         <%= select_tag :category, options_for_select(Training::CATEGORIES, params[:category].blank? || Training::CATEGORIES.include?(params[:category]) ? params[:category] : Training::CATEGORIES[3]), onchange: 'trainingsFilterCategoryChanged()', class: 'form-control' if params[:filter].blank? || params[:filter] == 'category' %>
         <%= text_field_tag :topic, params[:topic], placeholder: 'Filtrar por...', class: 'form-control' if params[:filter] == 'topic' %>
         <% if params[:filter] == 'date' %>
-          <div class="col-md-6 margin-bottom">
-            <div class="input-group date" id="initial-date-picker">
-              <%= text_field_tag :initial_date, params[:initial_date], placeholder: 'Fecha inicial', class: 'form-control' %>
-              <span class="input-group-addon">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group date" id="initial-date-picker">
+                <%= text_field_tag :initial_date, params[:initial_date], placeholder: 'Fecha inicial', class: 'form-control' %>
+                <span class="input-group-addon">
                 <%= fa_icon('calendar') %>
               </span>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="input-group date" id="final-date-picker">
-              <%= text_field_tag :final_date, params[:final_date], placeholder: 'Fecha final', class: 'form-control' %>
-              <span class="input-group-addon">
+            <div class="col-md-6">
+              <div class="input-group date" id="final-date-picker">
+                <%= text_field_tag :final_date, params[:final_date], placeholder: 'Fecha final', class: 'form-control' %>
+                <span class="input-group-addon">
                 <%= fa_icon('calendar') %>
               </span>
+              </div>
             </div>
           </div>
         <% end %>

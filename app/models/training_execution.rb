@@ -25,8 +25,8 @@ class TrainingExecution < ApplicationRecord
   def self.filter_training_executions(params)
     @training_executions = TrainingExecution.all
     @training_executions = @training_executions.by_category(params[:category]) if params[:category].present?
-    @training_executions = @training_executions.by_topic(params[:topic]) if params[:category].present?
-    @training_executions = @training_executions.by_date(params[:initial_date], params[:final_date]) if params[:initial_date].present? && params[:final_date].present?
+    @training_executions = @training_executions.by_topic(params[:topic]) if params[:topic].present?
+    @training_executions = @training_executions.by_date(params[:initial_date].to_time, params[:final_date].to_time) if params[:initial_date].present? && params[:final_date].present?
     @training_executions = @training_executions.by_area(params[:area_id]) if params[:area_id].present?
     @training_executions = @training_executions.by_collaborator(params[:collaborator]) if params[:collaborator].present?
     @training_executions = @training_executions.by_company(params[:company_id]) if params[:company_id].present?

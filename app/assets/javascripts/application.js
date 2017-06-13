@@ -35,5 +35,9 @@ $(document).on('turbolinks:load', function() {
             locale: 'es',
             format: 'DD/MM/YYYY'
         });
+    } else if((data.controller === 'trainings' || data.controller === 'training_executions') && (data.action === 'new' || data.action === 'edit')) {
+        $('#datetimepicker').datetimepicker({
+            locale: 'es'
+        });
     }
-})
+});

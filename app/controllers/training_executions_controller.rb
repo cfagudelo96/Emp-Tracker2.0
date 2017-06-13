@@ -7,7 +7,7 @@ class TrainingExecutionsController < ApplicationController
     gon.areas = Area.all
     gon.companies = Company.all
     @training_executions = TrainingExecution.filter_training_executions(params)
-    @training_executions = TrainingExecution.paginate(page: params[:page])
+    @training_executions = @training_executions.paginate(page: params[:page])
   end
 
   # GET /training_executions/1

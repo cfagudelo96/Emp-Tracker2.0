@@ -42,7 +42,8 @@
     html = '<input type="text" name="topic" id="topic" placeholder="Filtrar por..." class="form-control">'
     filters.append(html)
   else if filter_selected == 'date'
-    html = '<div class="col-md-6 margin-bottom">'
+    html = '<div class="row">'
+    html += '<div class="col-md-6">'
     html += '<div class="input-group date" id="initial-date-picker">'
     html += '<input type="text" name="initial_date" id="initial_date" value="" placeholder="Fecha inicial" class="form-control">'
     html += '<span class="input-group-addon">'
@@ -56,6 +57,7 @@
     html += '<span class="input-group-addon">'
     html += '<i class="fa fa-calendar"></i>'
     html += '</span>'
+    html += '</div>'
     html += '</div>'
     html += '</div>'
     filters.append(html)
