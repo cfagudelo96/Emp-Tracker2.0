@@ -56,6 +56,11 @@
               </td>
             </tr>
           <% end %>
+          <% if @training_execution.employees.empty? %>
+            <tr>
+              <td>La capacitación no tuvo asistentes</td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

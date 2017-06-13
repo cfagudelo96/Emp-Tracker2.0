@@ -12,16 +12,16 @@
               <div class="input-group date" id="initial-date-picker">
                 <%= text_field_tag :initial_date, params[:initial_date], placeholder: 'Fecha inicial', class: 'form-control' %>
                 <span class="input-group-addon">
-                <%= fa_icon('calendar') %>
-              </span>
+                  <%= fa_icon('calendar') %>
+                </span>
               </div>
             </div>
             <div class="col-md-6">
               <div class="input-group date" id="final-date-picker">
                 <%= text_field_tag :final_date, params[:final_date], placeholder: 'Fecha final', class: 'form-control' %>
                 <span class="input-group-addon">
-                <%= fa_icon('calendar') %>
-              </span>
+                  <%= fa_icon('calendar') %>
+                </span>
               </div>
             </div>
           </div>
@@ -34,12 +34,12 @@
         <input class="form-control" type="text" value="<%= params[:category] %>" <%= 'name=category' unless params[:category].blank? || Training::CATEGORIES.include?(params[:category]) %> placeholder="¿Cuál?" id="category_other">
       </div>
     </div>
-    <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12 col-md-3">
       <div class="form-group">
         <%= select_tag :filter, options_for_select(Training::FILTER_OPTIONS, params[:filter]), onchange: 'trainingsFilterChanged()', class: 'form-control' %>
       </div>
     </div>
-    <div class="col-xs-12 col-md-2">
+    <div class="col-xs-12 col-md-1">
       <%= submit_tag 'Filtrar', class: 'btn btn-default' %>
     </div>
   <% end %>

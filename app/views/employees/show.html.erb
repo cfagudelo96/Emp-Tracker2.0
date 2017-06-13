@@ -40,6 +40,11 @@
               </td>
             </tr>
           <% end %>
+          <% if @employee.training_executions.empty? %>
+            <tr>
+              <td>El empleado no ha tenido capacitaciones</td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

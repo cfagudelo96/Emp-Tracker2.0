@@ -21,7 +21,8 @@
 
 $(document).on('turbolinks:load', function() {
     var data = $('body').data();
-    if(data.controller === 'trainings' && data.action === 'index') {
+    if((data.controller === 'trainings' || data.controller === 'training_executions' || data.controller === 'employees')
+        && data.action === 'index') {
         $('#initial-date-picker').datetimepicker({
             locale: 'es',
             format: 'DD/MM/YYYY'

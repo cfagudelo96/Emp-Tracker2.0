@@ -5,6 +5,7 @@ class Employee < ApplicationRecord
     %w[Nombre name],
     %w[Identificación identification],
     %w[Posición position],
+    %w[Fecha\ de\ ingreso admission_date],
     %w[Área area_id],
     %w[Compañía company_id]
   ].freeze
@@ -37,7 +38,7 @@ class Employee < ApplicationRecord
     @employees = @employees.by_area(params[:area_id]) if params[:area_id].present?
     @employees = @employees.by_company(params[:company_id]) if params[:company_id].present?
     @employees = @employees.active if params[:active]
-    @employees = @employees.by_admission_date if params[:initial_date].present? && params[:final_date].present?
+    @employees = @employees.by_admission_date(params[:initial_date].to_time, params[:final_date].to_time) if params[:initial_date].present? && params[:final_date].present?
     @employees
   end
 
