@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'employees#index'
   resources :trainings do
     collection do
       get :all
