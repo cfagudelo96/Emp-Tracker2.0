@@ -20,7 +20,7 @@
     html = '<div class="row">'
     html += '<div class="col-md-6">'
     html += '<div class="input-group date" id="initial-date-picker">'
-    html += '<input type="text" name="initial_date" id="initial_date" value="" placeholder="Fecha inicial" class="form-control">'
+    html += '<input type="text" name="initial_date" id="initial_date" placeholder="Fecha inicial" class="form-control">'
     html += '<span class="input-group-addon">'
     html += '<i class="fa fa-calendar"></i>'
     html += '</span>'
@@ -28,7 +28,7 @@
     html += '</div>'
     html += '<div class="col-md-6">'
     html += '<div class="input-group date" id="final-date-picker">'
-    html += '<input type="text" name="final_date" id="final_date" value="" placeholder="Fecha final" class="form-control">'
+    html += '<input type="text" name="final_date" id="final_date" placeholder="Fecha final" class="form-control">'
     html += '<span class="input-group-addon">'
     html += '<i class="fa fa-calendar"></i>'
     html += '</span>'
@@ -56,3 +56,31 @@
       html += "<option value='#{company.id}'>#{company.name}</option>"
     html += '</select>'
     filters.append(html)
+  else if filter_selected == 'without_trainings'
+    html = '<div class="row">'
+    html += '<div class="col-md-6">'
+    html += '<div class="input-group date" id="initial-date-picker">'
+    html += '<input type="text" name="trainings_initial_date" id="trainings_initial_date" placeholder="Fecha inicial" class="form-control">'
+    html += '<span class="input-group-addon">'
+    html += '<i class="fa fa-calendar"></i>'
+    html += '</span>'
+    html += '</div>'
+    html += '</div>'
+    html += '<div class="col-md-6">'
+    html += '<div class="input-group date" id="final-date-picker">'
+    html += '<input type="text" name="trainings_final_date" id="trainings_final_date" placeholder="Fecha final" class="form-control">'
+    html += '<span class="input-group-addon">'
+    html += '<i class="fa fa-calendar"></i>'
+    html += '</span>'
+    html += '</div>'
+    html += '</div>'
+    html += '</div>'
+    filters.append(html)
+    $('#initial-date-picker').datetimepicker({
+      locale: 'es'
+      format: 'DD/MM/YYYY'
+    })
+    $('#final-date-picker').datetimepicker({
+      locale: 'es'
+      format: 'DD/MM/YYYY'
+    })

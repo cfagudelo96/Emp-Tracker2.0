@@ -43,8 +43,8 @@ class Employee < ApplicationRecord
     @employees = @employees.active if params[:active]
     @employees = @employees.by_admission_date(params[:initial_date].to_time, params[:final_date].to_time) if params[:initial_date].present? && params[:final_date].present?
     if params[:filter] == 'without_trainings'
-      if params[:initial_date].present? && params[:final_date].present?
-        @employees.without_trainings_between_dates(params[:initial_date].to_time, params[:final_date].to_time)
+      if params[:trainings_initial_date].present? && params[:trainings_final_date].present?
+        @employees = @employees.without_trainings_between_dates(params[:trainings_initial_date].to_time, params[:trainings_final_date].to_time)
       else
         @employees = @employees.without_trainings
       end
