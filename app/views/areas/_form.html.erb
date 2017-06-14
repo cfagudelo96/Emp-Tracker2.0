@@ -1,7 +1,7 @@
 <%= form_for(area) do |f| %>
   <% if area.errors.any? %>
     <div id="error_explanation" class="alert alert-danger" role="alert">
-      <h2><%= pluralize(area.errors.count, "error") %> no permitieron guardar el área:</h2>
+      <h2><%= pluralize(area.errors.count, 'error') %> no permitieron guardar el área:</h2>
 
       <ul>
       <% area.errors.full_messages.each do |message| %>

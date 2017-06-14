@@ -9,12 +9,11 @@
         <% @trainings.each do |training| %>
           <tr>
             <td>
-              <p><%= training.topic %> (<%= training.category %>)</p>
+              <p><%= training %> (<%= training.category %>)</p>
               <p><%= training.date.strftime('%d/%m/%y %R') %></p>
-              <div class="pull-right">
-                <%= link_to new_training_execution_path(training_id: training.id), class: 'btn btn-default' do %>
-                  Registrar ejecución
-                <% end %>
+            </td>
+            <td>
+              <span class="pull-right">
                 <%= link_to training, class: 'btn btn-info' do %>
                   <%= fa_icon('info') %>
                 <% end %>
@@ -24,7 +23,7 @@
                 <%= link_to training, method: :delete, data: { confirm: '¿Seguro que desea eliminar la formación?' }, class: 'btn btn-danger' do %>
                   <%= fa_icon('trash') %>
                 <% end %>
-              </div>
+              </span>
             </td>
           </tr>
         <% end %>
@@ -32,6 +31,7 @@
       </table>
     </div>
   </div>
+
   <div class="col-md-6 col-xs-12">
     <h2>Formaciones ejecutadas</h2>
     <div class="table-responsive">
@@ -40,9 +40,11 @@
         <% @training_executions.each do |training_execution| %>
           <tr>
             <td>
-              <p><%= training_execution.topic %> (<%= training_execution.category %>)</p>
+              <p><%= training_execution %> (<%= training_execution.category %>)</p>
               <p><%= training_execution.date.strftime('%d/%m/%y %R') %></p>
-              <div class="pull-right">
+            </td>
+            <td>
+              <span class="pull-right">
                 <%= link_to training_execution, class: 'btn btn-info' do %>
                   <%= fa_icon('info') %>
                 <% end %>
@@ -52,7 +54,7 @@
                 <%= link_to training_execution, method: :delete, data: { confirm: '¿Seguro que desea eliminar la formación?' }, class: 'btn btn-danger' do %>
                   <%= fa_icon('trash') %>
                 <% end %>
-              </div>
+              </span>
             </td>
           </tr>
         <% end %>

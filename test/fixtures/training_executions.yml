@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   category: MyString
   topic: MyString
   objective: MyString
@@ -9,21 +10,19 @@ one:
   trainer: MyString
   internal: false
   area_id: 1
-  collaborator_id: 1
   company_id: 1
-  planned_training_id: 1
-  planned: false
+  training_id: 1
+  planned: true
 
 two:
-  category: MyString
-  topic: MyString
+  id: 2
+  category: MyString2
+  topic: MyString2
   objective: MyString
-  date: 2017-05-07 20:46:06
+  date: 2017-04-07 20:46:06
   hourly_intensity: 1.5
   trainer: MyString
   internal: false
-  area_id: 1
   collaborator_id: 1
-  company_id: 1
-  planned_training_id: 1
+  company_id: 2
   planned: false

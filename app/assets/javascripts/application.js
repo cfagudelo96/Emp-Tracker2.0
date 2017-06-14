@@ -18,3 +18,27 @@
 //= require bootstrap-datetimepicker
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+    var data = $('body').data();
+    if((data.controller === 'trainings' || data.controller === 'training_executions' || data.controller === 'employees')
+        && data.action === 'index') {
+        $('#initial-date-picker').datetimepicker({
+            locale: 'es',
+            format: 'DD/MM/YYYY'
+        });
+        $('#final-date-picker').datetimepicker({
+            locale: 'es',
+            format: 'DD/MM/YYYY'
+        })
+    } else if(data.controller === 'employees' && (data.action === 'new' || data.action === 'edit')) {
+        $('#datetimepicker').datetimepicker({
+            locale: 'es',
+            format: 'DD/MM/YYYY'
+        });
+    } else if((data.controller === 'trainings' || data.controller === 'training_executions') && (data.action === 'new' || data.action === 'edit')) {
+        $('#datetimepicker').datetimepicker({
+            locale: 'es'
+        });
+    }
+});

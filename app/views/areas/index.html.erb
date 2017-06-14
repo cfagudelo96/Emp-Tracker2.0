@@ -1,6 +1,15 @@
 <h1>Áreas</h1>
 
-<div class="table-responsive margin-bottom">
+<%= form_tag areas_path, method: :get do %>
+  <div class="input-group margin-bottom">
+    <%= text_field_tag :name, params[:name], placeholder: 'Filtrar por nombre...', class: 'form-control' %>
+    <span class="input-group-btn">
+      <%= submit_tag 'Filtrar', class: 'btn btn-default' %>
+    </span>
+  </div>
+<% end %>
+
+<div class="table-responsive">
   <table class="table table-striped">
     <tbody>
     <% @areas.each do |area| %>
@@ -18,10 +27,21 @@
         </td>
       </tr>
     <% end %>
+    <% if @areas.empty? %>
+      <tr>
+        <td>
+          No se encontraron registros
+        </td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 </div>
 
-<%= link_to new_area_path, class: 'btn btn-default' do %>
-  <%= fa_icon('plus') %>
-<% end %>
+<div>
+  <%= link_to new_area_path, class: 'btn btn-default' do %>
+    <%= fa_icon('plus') %>
+  <% end %>
+</div>
+
+<%= will_paginate @areas %>

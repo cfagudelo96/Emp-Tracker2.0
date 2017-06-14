@@ -4,7 +4,10 @@ class TrainingsController < ApplicationController
   # GET /trainings
   # GET /trainings.json
   def index
-    @trainings = Training.all
+    gon.areas = Area.all
+    gon.companies = Company.all
+    @trainings = Training.filter_trainings(params)
+    @trainings = @trainings.paginate(page: params[:page])
   end
 
   def all
@@ -15,6 +18,11 @@ class TrainingsController < ApplicationController
   # GET /trainings/1
   # GET /trainings/1.json
   def show
+    @aide = if @training.area_id.present?
+              Area.find(@training.area_id)
+            elsif @training.collaborator_id.present?
+              Employee.find(@training.collaborator_id)
+            end
   end
 
   # GET /trainings/new

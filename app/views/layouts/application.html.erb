@@ -3,12 +3,12 @@
   <head>
     <title>EmpTracker 2.0</title>
     <%= csrf_meta_tags %>
-
+    <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body data-action="<%= action_name %>" data-controller="<%= controller_name %>">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -24,6 +24,13 @@
             <li><%= link_to 'Áreas', areas_path %></li>
             <li><%= link_to 'Compañias', companies_path %></li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if admin_signed_in? %>
+              <li><%= link_to('Logout', destroy_admin_session_path, method: :delete) %></li>
+            <% else %>
+              <li><%= link_to('Login', new_admin_session_path)  %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </nav>
@@ -34,7 +41,25 @@
           <%= notice %>
         </div>
       <% end %>
+      <% if alert.present? %>
+        <div class="alert alert-warning alert-dismissable fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close"><%= fa_icon('times-circle') %></a>
+          <%= alert %>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
+    <footer class="footer-distributed">
+      <div class="container">
+        <p class="footer-links">Made by Carlos Felipe Agudelo</p>
+        <p>cf.agudelo96@gmail.com</p>
+        <%= link_to 'https://www.linkedin.com/in/carlos-agudelo-3b232a104/?locale=en_US', class: 'footer-link-icon' do %>
+          <%= fa_icon('linkedin') %>
+        <% end %>
+        <%= link_to 'https://github.com/cfagudelo96', class: 'footer-link-icon' do %>
+          <%= fa_icon('github') %>
+        <% end %>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,23 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  type: 
+  id: 1
+  category: MyString
   topic: MyString
   objective: MyText
+  area_id: 1
   company_id: 1
   date: 2017-04-07 20:36:49
   hourly_intensity: 1.5
   trainer: MyString
   internal: false
-  planned: false
 
 two:
-  type: 
-  topic: MyString
+  id: 2
+  category: MyString2
+  topic: MyString2
   objective: MyText
-  company_id: 1
-  date: 2017-04-07 20:36:49
+  collaborator_id: 2
+  company_id: 2
+  date: 2017-03-07 20:36:49
   hourly_intensity: 1.5
   trainer: MyString
   internal: false
-  planned: false

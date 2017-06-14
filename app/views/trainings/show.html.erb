@@ -1,4 +1,4 @@
-<h1><%= @training.topic %></h1>
+<h1><%= @training %></h1>
 
 <h4>Categoría</h4>
 <p><%= @training.category %></p>
@@ -9,16 +9,16 @@
 <% end %>
 
 <h4>Sede</h4>
-<p><%= Company.find(@training.company_id) %></p>
+<p><%= @training.company %></p>
 
 <% if @training.area_id.present? %>
   <h4>Área responsable</h4>
-  <p><%= Area.find(@training.area_id) %></p>
+  <p><%= @aide %></p>
 <% end %>
 
 <% if @training.collaborator_id.present? %>
   <h4>Colaborador responsable</h4>
-  <p><%= Employee.find(@training.collaborator_id) %></p>
+  <p><%= @aide %></p>
 <% end %>
 
 <h4>Fecha</h4>
@@ -32,9 +32,14 @@
 
 <h4><%= @training.internal ? 'Formación interna' : 'Formación externa' %></h4>
 
-<%= link_to trainings_path, class: 'btn btn-default' do %>
-  <%= fa_icon('arrow-left') %>
-<% end %>
+<div class="btn-group" role="group">
+  <%= link_to trainings_path, class: 'btn btn-default' do %>
+    <%= fa_icon('arrow-left') %>
+  <% end %>
+  <%= link_to new_training_execution_path(training_id: @training.id), class: 'btn btn-default' do %>
+    Registrar ejecución
+  <% end %>
+</div>
 <%= link_to edit_training_path(@training), class: 'btn btn-warning pull-right' do %>
   <%= fa_icon('pencil') %>
 <% end %>

@@ -1,14 +1,83 @@
 <h1>Empleados</h1>
 
-<div class="table-responsive margin-bottom">
+<div class="row margin-bottom">
+  <%= form_tag employees_path, method: :get do %>
+    <div class="col-xs-12 col-md-8">
+      <div class="form-group" id="filters">
+        <%= text_field_tag :name, params[:name], placeholder: 'Filtrar por...', class: 'form-control' if params[:filter].blank? || params[:filter] == 'name' %>
+        <%= number_field_tag :identification, params[:identification], placeholder: 'Filtrar por...', class: 'form-control' if params[:filter] == 'identification' %>
+        <%= text_field_tag :position, params[:position], placeholder: 'Filtrar por...', class: 'form-control' if params[:filter] == 'position' %>
+        <% if params[:filter] == 'admission_date' %>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group date" id="initial-date-picker">
+                <%= text_field_tag :initial_date, params[:initial_date], placeholder: 'Fecha inicial', class: 'form-control' %>
+                <span class="input-group-addon">
+                  <%= fa_icon('calendar') %>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group date" id="final-date-picker">
+                <%= text_field_tag :final_date, params[:final_date], placeholder: 'Fecha final', class: 'form-control' %>
+                <span class="input-group-addon">
+                  <%= fa_icon('calendar') %>
+                </span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <%= select_tag :area_id, options_from_collection_for_select(Area.all, :id, :name, params[:area_id]), class: 'form-control' if params[:filter] == 'area_id' %>
+        <%= select_tag :company_id, options_from_collection_for_select(Company.all, :id, :name, params[:company_id]), class: 'form-control' if params[:filter] == 'company_id' %>
+        <% if params[:filter] == 'without_trainings' %>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group date" id="initial-date-picker">
+                <%= text_field_tag :trainings_initial_date, params[:trainings_initial_date], placeholder: 'Fecha inicial', class: 'form-control' %>
+                <span class="input-group-addon">
+                  <%= fa_icon('calendar') %>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group date" id="final-date-picker">
+                <%= text_field_tag :trainings_final_date, params[:trainings_final_date], placeholder: 'Fecha final', class: 'form-control' %>
+                <span class="input-group-addon">
+                  <%= fa_icon('calendar') %>
+                </span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <div class="checkbox">
+          <label><%= check_box_tag :active, true, params[:active].present? %> Sólo empleados activos</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <div class="form-group">
+        <%= select_tag :filter, options_for_select(Employee::FILTER_OPTIONS, params[:filter]), onchange: 'employeesFilterChanged()', class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-1">
+      <%= submit_tag 'Filtrar', class: 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>
+
+<div class="table-responsive">
   <table class="table table-striped">
     <tbody>
     <% @employees.each do |employee| %>
       <tr>
         <td>
           <h4><%= employee %> <%= raw '<small>(Inactivo)</small>' unless employee.active %></h4>
-          <p><%= Area.find(employee.area_id) %> (<%= employee.position %>)</p>
-          <p><%= Company.find(employee.company_id) %></p>
+          <p><%= employee.area %> (<%= employee.position %>)</p>
+          <p><%= employee.company %></p>
+        </td>
+        <td>
           <span class="pull-right">
             <%= link_to employee, class: 'btn btn-info' do %>
               <%= fa_icon('info') %>
@@ -23,10 +92,21 @@
         </td>
       </tr>
     <% end %>
+    <% if @employees.empty? %>
+      <tr>
+        <td>
+          No se encontraron registros
+        </td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 </div>
 
-<%= link_to new_employee_path, class: 'btn btn-default' do %>
-  <%= fa_icon('plus') %>
-<% end %>
+<div>
+  <%= link_to new_employee_path, class: 'btn btn-default' do %>
+      <%= fa_icon('plus') %>
+  <% end %>
+</div>
+
+<%= will_paginate @employees %>
