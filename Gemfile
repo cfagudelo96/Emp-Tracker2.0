@@ -24,6 +24,7 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
+gem 'devise'
 gem 'gon'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'will_paginate', '~> 3.1.0'

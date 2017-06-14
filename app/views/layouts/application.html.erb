@@ -24,6 +24,13 @@
             <li><%= link_to 'Áreas', areas_path %></li>
             <li><%= link_to 'Compañias', companies_path %></li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if admin_signed_in? %>
+              <li><%= link_to('Logout', destroy_admin_session_path, method: :delete) %></li>
+            <% else %>
+              <li><%= link_to('Login', new_admin_session_path)  %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </nav>
@@ -32,6 +39,12 @@
         <div class="alert alert-info alert-dismissable fade in">
           <a href="#" class="close" data-dismiss="alert" aria-label="close"><%= fa_icon('times-circle') %></a>
           <%= notice %>
+        </div>
+      <% end %>
+      <% if alert.present? %>
+        <div class="alert alert-warning alert-dismissable fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close"><%= fa_icon('times-circle') %></a>
+          <%= alert %>
         </div>
       <% end %>
       <%= yield %>
