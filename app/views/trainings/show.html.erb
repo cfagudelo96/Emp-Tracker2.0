@@ -1,45 +1,80 @@
 <h1><%= @training %></h1>
 
-<h4>Categoría</h4>
-<p><%= @training.category %></p>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h4>Categoría</h4>
+    <p><%= @training.category %></p>
 
-<% if @training.objective.present? %>
-  <h4>Objetivo</h4>
-  <p><%= @training.objective %></p>
-<% end %>
+    <% if @training.objective.present? %>
+      <h4>Objetivo</h4>
+      <p><%= @training.objective %></p>
+    <% end %>
 
-<h4>Sede</h4>
-<p><%= @training.company %></p>
+    <h4>Sede</h4>
+    <p><%= @training.company %></p>
 
-<% if @training.area_id.present? %>
-  <h4>Área responsable</h4>
-  <p><%= @aide %></p>
-<% end %>
+    <% if @training.area_id.present? %>
+      <h4>Área responsable</h4>
+      <p><%= @aide %></p>
+    <% end %>
 
-<% if @training.collaborator_id.present? %>
-  <h4>Colaborador responsable</h4>
-  <p><%= @aide %></p>
-<% end %>
+    <% if @training.collaborator_id.present? %>
+      <h4>Colaborador responsable</h4>
+      <p><%= @aide %></p>
+    <% end %>
 
-<h4>Fecha</h4>
-<p><%= @training.date.strftime('%d/%m/%y %R') %></p>
+    <h4>Fecha</h4>
+    <p><%= @training.date.strftime('%d/%m/%y %R') %></p>
 
-<h4>Intensidad horaria</h4>
-<p><%= @training.hourly_intensity %></p>
+    <h4>Intensidad horaria</h4>
+    <p><%= @training.hourly_intensity %></p>
 
-<h4>Formador</h4>
-<p><%= @training.trainer %></p>
+    <h4>Formador</h4>
+    <p><%= @training.trainer %></p>
 
-<h4><%= @training.internal ? 'Formación interna' : 'Formación externa' %></h4>
+    <h4><%= @training.internal ? 'Formación interna' : 'Formación externa' %></h4>
+  </div>
+  <div class="col xs-12 col-md-6">
+    <h4>Ejecuciones de la formación</h4>
+    <div class="table-responsive overflowing-box-tall">
+      <table class="table table-responsive table-condensed">
+        <tbody>
+          <% @training.training_executions.each do |training_execution| %>
+            <tr>
+              <td>
+                <p><%= training_execution %> (<%= training_execution.category %>)</p>
+                <p><%= training_execution.date.strftime('%d/%m/%y %R') %></p>
+              </td>
+              <td>
+                <span class="pull-right">
+                  <%= link_to training_execution, class: 'btn btn-info' do %>
+                    <%= fa_icon('info') %>
+                  <% end %>
+                </span>
+              </td>
+            </tr>
+          <% end %>
+          <% if @training.training_executions.empty? %>
+            <tr>
+              <td>No se encontraron ejecuciones para esta formación</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<div class="btn-group" role="group">
-  <%= link_to trainings_path, class: 'btn btn-default' do %>
-    <%= fa_icon('arrow-left') %>
-  <% end %>
-  <%= link_to new_training_execution_path(training_id: @training.id), class: 'btn btn-default' do %>
-    Registrar ejecución
+<div>
+  <div class="btn-group" role="group">
+    <%= link_to trainings_path, class: 'btn btn-default' do %>
+      <%= fa_icon('arrow-left') %>
+    <% end %>
+    <%= link_to new_training_execution_path(training_id: @training.id), class: 'btn btn-default' do %>
+      Registrar ejecución
+    <% end %>
+  </div>
+  <%= link_to edit_training_path(@training), class: 'btn btn-warning pull-right' do %>
+    <%= fa_icon('pencil') %>
   <% end %>
 </div>
-<%= link_to edit_training_path(@training), class: 'btn btn-warning pull-right' do %>
-  <%= fa_icon('pencil') %>
-<% end %>
