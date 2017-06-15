@@ -1,6 +1,4 @@
 class Company < ApplicationRecord
-  self.per_page = 10
-
   has_many :employees
   has_many :trainings
   has_many :training_executions

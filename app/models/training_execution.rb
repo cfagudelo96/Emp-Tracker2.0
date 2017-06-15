@@ -1,6 +1,4 @@
 class TrainingExecution < ApplicationRecord
-  self.per_page = 10
-
   has_many :attendances
   has_many :employees, through: :attendances
 

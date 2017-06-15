@@ -1,6 +1,4 @@
 class Employee < ApplicationRecord
-  self.per_page = 10
-
   FILTER_OPTIONS = [
     %w[Nombre name],
     %w[Identificación identification],

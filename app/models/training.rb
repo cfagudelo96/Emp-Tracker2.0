@@ -1,6 +1,4 @@
 class Training < ApplicationRecord
-  self.per_page = 10
-
   CATEGORIES = %w[Capacitación Inducción Entrenamiento Otro].freeze
   FILTER_OPTIONS = [
     %w[Categoría category],
