@@ -20,8 +20,6 @@ class Training < ApplicationRecord
   validates :hourly_intensity, numericality: { greater_than_or_equal_to: 0 }
   validates :trainer, presence: true
 
-  validate :area_collaborator_validator
-
   scope :by_category, (->(category) { where('category like ?', "%#{category}%") })
   scope :by_topic, (->(topic) { where('topic like ?', "%#{topic}%") })
   scope :by_date, (->(initial_date, final_date) { where(date: initial_date..final_date) })
@@ -38,16 +36,6 @@ class Training < ApplicationRecord
     @trainings = @trainings.by_collaborator(params[:collaborator]) if params[:collaborator].present?
     @trainings = @trainings.by_company(params[:company_id]) if params[:company_id].present?
     @trainings
-  end
-
-  def area_collaborator_validator
-    if area_id.blank? && collaborator_id.blank?
-      errors.add(:area_id, 'can not be blank if collaborator is also blank')
-      errors.add(:collaborator_id, 'can not be blank if area is also blank')
-    elsif area_id.present? && collaborator_id.present?
-      errors.add(:area_id, 'can not be present if collaborator is also present')
-      errors.add(:collaborator_id, 'can not be present if area is also present')
-    end
   end
 
   def to_s
