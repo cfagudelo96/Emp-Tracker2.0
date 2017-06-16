@@ -5,9 +5,12 @@
     <div class="form-group">
       <%= text_field_tag :name, params[:name], placeholder: 'Filtrar por nombre...', class: 'form-control' %>
     </div>
-    <%= button_tag type: :submit, class: 'btn btn-default' do %>
-      <%= fa_icon('search') %> Filtrar
-    <% end %>
+    <div>
+      <%= link_to 'Quitar filtro', areas_path, class: 'btn btn-default' %>
+      <%= button_tag type: :submit, class: 'btn btn-default pull-right' do %>
+        <%= fa_icon('search') %> Filtrar
+      <% end %>
+    </div>
   <% end %>
 </div>
 

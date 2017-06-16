@@ -1,11 +1,5 @@
 <h1>Nueva compañía</h1>
 
-<div class="margin-bottom">
+<div>
   <%= render 'form', company: @company %>
 </div>
-
-<br>
-
-<%= link_to companies_path, class: 'btn btn-default' do %>
-  <%= fa_icon('arrow-left') %>
-<% end %>
