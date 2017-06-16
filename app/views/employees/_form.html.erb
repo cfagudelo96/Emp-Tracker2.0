@@ -17,8 +17,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :identification, 'Identificación' %>
-    <%= f.number_field :identification, required: true, placeholder: 'Cédula de Ciudadanía', class: 'form-control' %>
+    <%= f.label :identification, 'Identificación (C.C.)' %>
+    <%= f.number_field :identification, required: true, class: 'form-control' %>
   </div>
 
   <div class="form-group">
@@ -53,6 +53,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit 'Guardar', class: 'btn btn-default' %>
+    <%= link_to employees_path, class: 'btn btn-default' do %>
+      <%= fa_icon('arrow-left') %> Empleados
+    <% end %>
+    <%= f.submit 'Guardar', class: 'btn btn-default pull-right' %>
   </div>
 <% end %>
